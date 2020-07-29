@@ -1,0 +1,11 @@
+Options +FollowSymLinks
+RewriteEngine on
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}\.php -f
+RewriteRule ^(.*)$ $1.php
+
+RewriteCond %{HTTP_HOST} covid19.cruz.ce.gov.br [NC]
+RewriteRule ^(.*)$ https://cruz.ce.gov.br/covid19/src/web/pages/internas/$1 [L,NC,QSA]
+
+# Você pode adicionar quantas URLs quizer. Ex:
+RewriteRule ^boletim/?$ /src/web/pages/internas/boletim.php [NC,L]
