@@ -26,7 +26,6 @@
                     $atualizacao = $resultado->last_update;
                     $atualiza = explode(" ", $atualizacao);
                     $dia = date ('d/m/Y', strtotime($atualizacao));
-                   // $dia = date ('d \d\\e\ F \d\\e\ Y', strtotime($atualizacao));
                     $conf_isolados = $resultado->c_qty_isolated;
                     $conf_internados = $resultado->c_qty_interned;
                     $conf_obitos = $resultado->c_qty_lethal;
@@ -38,6 +37,9 @@
                     $descartados = $resultado->qty_discarded;
                     $conf_total = $conf_isolados + $conf_recuperados + $conf_obitos;
                     $notificacoes = $conf_total + $susp_total + $descartados ; 
+                    $letalidade = $conf_obitos * 100 / $conf_total;
+
+                   // var_dump($letalidade);
 
       //var_dump($atualiza);
                   
@@ -112,7 +114,7 @@
                 <div class="card bg-light">
                     <div class="card-body">
                         <div class="d-flex flex-column align-items-center">
-                            <h4 style="text-align: center;"><b style="color: rgb(0, 0, 0);"><?= $conf_recuperados;?></b></h4>
+                            <h4 style="text-align: center;"><b style="color: blue;"><?= $conf_recuperados;?></b></h4>
                             <h6 style="text-align: center;">Curados</h6><img src="https://covid19.ifce.edu.br/assets/img/line-green.13487c8b.svg"
                                 height="20px">
                         </div>
@@ -134,7 +136,7 @@
                 <div class="card bg-light">
                     <div class="card-body">
                         <div class="d-flex flex-column align-items-center">
-                            <h4 style="text-align: center;"><b style="color: rgb(0, 0, 0);">1.28%</b></h4>
+                            <h4 style="text-align: center;"><b style="color: rgb(0, 0, 0);"><?= $letalidade; ?> %</b></h4>
                             <h6 style="text-align: center;">Letalidade</h6><img src="https://covid19.ifce.edu.br/assets/img/line-red.954b705a.svg"
                                 height="20px">
                         </div>
