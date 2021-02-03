@@ -39,9 +39,7 @@
                     $notificacoes = $conf_total + $susp_total + $descartados ; 
                     $letalidade = $conf_obitos * 100 / $conf_total;
 
-                   // var_dump($letalidade);
-
-      //var_dump($atualiza);
+                   
                   
                 ?>
 
