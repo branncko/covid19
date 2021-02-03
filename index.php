@@ -1,4 +1,5 @@
 <?php include 'conecta.php';
+include_once 'busca/variaveis.php';
 	$consulta 		= "SELECT * FROM boletim ORDER BY dia DESC LIMIT 1";
 	$con      		= $mysqli_connection->query($consulta) or die($mysqli_connection->error);
 	$consulta_table = "SELECT * FROM boletim ORDER BY dia DESC LIMIT 7";
@@ -37,7 +38,7 @@
 			
 			<div class="text-center navbar-brand-wrapper d-flex align-items-top justify-content-center">
 				<a class="navbar-brand brand-logo" href="#">
-				<img style="width: 140px" src="https://www.cruz.ce.gov.br/portal/wp-content/uploads/2018/03/logo-pmc.png" alt="Prefeitura de Cruz/CE" /> </a>
+				<img style="width: 140px" src="https://www.cruz.ce.gov.br/wp-content/uploads/2018/03/logo-pmc.png" alt="Prefeitura de Cruz/CE" /> </a>
 				<a class="navbar-brand brand-logo-mini" href="#">
 				<img src="assets/images/pmc-logo-mobile.png" alt="Prefeitura de Cruz/CE" /> </a>
 			</div>
@@ -149,13 +150,13 @@
 					</li>
 					<li class="nav-item nav-category">Menu Principal</li>
 					<li class="nav-item">
-						<a class="nav-link" href="<?php echo $base_url ?>index.php">
+						<a class="nav-link" href="index.php">
 						<i class="menu-icon typcn typcn-document-text"></i>
 						<span class="menu-title">Início</span>
 						</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link" href="<?php echo $base_url ?>views/boletim.php">
+						<a class="nav-link" href="views/boletim.php">
 						<i class="menu-icon typcn typcn-shopping-bag"></i>
 						<span class="menu-title">Boletim COVID-19</span>
 						</a>
@@ -228,17 +229,19 @@
 						</div>
 					</div>
 					<div class="row">
+				
 						<div class="col-md-12 grid-margin stretch-card">
 							<div class="card">
 								<div class="card-body">
 									<?php while($row_boletim = $con->fetch_array()) { ?>
 									<h4 class="card-title">BOLETIM EPIDEMIOLÓGICO DO NOVO CORONAVÍRUS (COVID-19)</h4>
-									<p class="card-description"> <code>Última Atualização: <strong><?php echo date ('d/m/Y', strtotime($row_boletim['dia'])); ?></strong> às <strong><?php echo $row_boletim['hora']; ?></strong> - Dados da Secretaria Municipal de Saúde (SESA).</code></p>
+									<p class="card-description"> <code> Última Atualização: <strong><?php echo $dia; ?></strong> às <strong><?php echo $atualiza[1]; ?></strong>
+                - Dados da Secretaria Municipal de Saúde (SESA).</code></p>
 									<div class="row">
 										<div class="col-lg-3 col-md-6">
 											<div class="d-flex">
 												<div class="wrapper">
-													<h2 class="font-weight-semibold mb-0"><?php echo $row_boletim['suspeitos']; ?></h2>
+													<h2 class="font-weight-semibold mb-0"><?= $susp_total;?></h2>
 													<div class="d-flex align-items-center pb-2">
 														<div class="dot-indicator bg-warning mr-2"></div>
 														<p class="mb-0">Casos Suspeitos</p>
@@ -249,7 +252,7 @@
 										<div class="col-lg-3 col-md-6 mt-md-0 mt-4">
 											<div class="d-flex">
 												<div class="wrapper">
-													<h2 class="font-weight-semibold mb-0"><?php echo $row_boletim['confirmados']; ?></h2>
+													<h2 class="font-weight-semibold mb-0"><?= $conf_total;?></h2>
 													<div class="d-flex align-items-center pb-2">
 														<div class="dot-indicator bg-danger mr-2"></div>
 														<p class="mb-0">Casos Confirmados</p>
@@ -260,7 +263,7 @@
 										<div class="col-lg-3 col-md-6 mt-md-0 mt-4">
 											<div class="d-flex">
 												<div class="wrapper">
-													<h2 class="font-weight-semibold mb-0"><?php echo $row_boletim['descartados']; ?></h2>
+													<h2 class="font-weight-semibold mb-0"><?= $descartados; ?></h2>
 													<div class="d-flex align-items-center pb-2">
 														<div class="dot-indicator bg-success mr-2"></div>
 														<p class="mb-0">Casos Descartados</p>
@@ -271,7 +274,7 @@
 										<div class="col-lg-3 col-md-6 mt-md-0 mt-4">
 											<div class="d-flex">
 												<div class="wrapper">
-													<h2 class="font-weight-semibold mb-0"><?php echo $row_boletim['obitos']; ?></h2>
+													<h2 class="font-weight-semibold mb-0"><?= $conf_obitos;?></h2>
 													<div class="d-flex align-items-center pb-2">
 														<div class="dot-indicator bg-dark mr-2"></div>
 														<p class="mb-0">Óbitos</p>
