@@ -13,35 +13,12 @@
 
 <body>
     <?php
-                    $url = "https://covid19.ifce.edu.br/api/statistics/cities/30/";
-                    $ch = curl_init($url);
-                    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-                    curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
-                    curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "GET");
-                    $resultado = json_decode(curl_exec($ch));
-                    $municipio = $resultado->name;
-                    $leitos = $resultado->available_beds;
-                    $respiradores = $resultado->available_breathers;
-                    $uti = $resultado->available_uti;
-                    $atualizacao = $resultado->last_update;
-                    $atualiza = explode(" ", $atualizacao);
-                    $dia = date ('d/m/Y', strtotime($atualizacao));
-                   // $dia = date ('d \d\\e\ F \d\\e\ Y', strtotime($atualizacao));
-                    $conf_isolados = $resultado->c_qty_isolated;
-                    $conf_internados = $resultado->c_qty_interned;
-                    $conf_obitos = $resultado->c_qty_lethal;
-                    $conf_recuperados = $resultado->c_qty_recovered;
-                    $susp_isolados = $resultado->s_qty_isolated;
-                    $susp_internados = $resultado->s_qty_interned;
-                    $susp_total = $susp_isolados + $susp_internados;
-                    $reinfectados = $resultado->qty_reinfected;
-                    $descartados = $resultado->qty_discarded;
-                    $conf_total = $conf_isolados + $conf_recuperados + $conf_obitos;
-                    $notificacoes = $conf_total + $susp_total + $descartados ; 
+            
+            include_once "variaveis.php";
 
-      //var_dump($atualiza);
-                  
-                ?>
+            //var_dump($atualiza);
+                    
+        ?>
 
 
     <div class="container bg-secondary p-3">
@@ -58,56 +35,62 @@
                 <?= $descartados; ?> descartados, <?= $conf_total;?> confirmados e <?= $susp_total;?> suspeitos.
                 <br> Em relação a positividade, dos <?= $conf_total;?> confirmados:
                 <?= $conf_recuperados;?> recuperados, <?= $conf_internados;?> hospitalizados, <?= $conf_isolados;?>
-                isolados e <?= $conf_obitos;?> óbitos.
+                isolados e <?= $conf_obitos;?> óbitos. <br>
+                <small>
+                    O município de <strong> <?= $municipio;?> </strong> dispõe de <strong><?= $leitos; ?> </strong>
+                    leitos e
+                    <strong><?= $resultado->available_breathers; ?> </strong>
+                    respiradores.
+                </small>
 
             </p>
-            <hr>
-            <p class="mx-5 small">
-                Última Atualização: <strong><?php echo $dia; ?></strong> às <strong><?php echo $atualiza[1]; ?></strong>
-                - Dados da Secretaria Municipal de Saúde (SESA).
-            </p>
 
-            <p class="p-3">
-                O município de <strong> <?= $municipio;?> </strong> dispõe de <strong><?= $leitos; ?> </strong> leitos e
-                <strong><?= $resultado->available_breathers; ?> </strong>
-                respiradores.
 
-            </p>
         </div>
 
 
-
-        <div class="row">
+        <div class="row mt-3">
             <div class="col-md-2 col-sm-12">
                 <div class="card bg-light">
                     <div class="card-body">
                         <div class="d-flex flex-column align-items-center">
-                            <h4 style="text-align: center;"><b style="color: rgb(0, 0, 0);"><?= $conf_total;?></b></h4>
-                            <h6 style="text-align: center;">Confirmados</h6><img
-                                src="https://covid19.ifce.edu.br/assets/img/line-red.954b705a.svg" height="20px">
+                            <h4 style="text-align: center;"><b style="color: rgb(0, 0, 0);"><?= $notificacoes;?></b></h4>
+                            <h6 style="text-align: center;">Casos Notificados</h6>
                         </div>
                     </div>
                 </div>
             </div>
+
             <div class="col-md-2 col-sm-12">
                 <div class="card bg-light">
                     <div class="card-body">
                         <div class="d-flex flex-column align-items-center">
                             <h4 style="text-align: center;"><b style="color: rgb(0, 0, 0);"><?= $susp_total;?></b></h4>
-                            <h6 style="text-align: center;">Suspeitos</h6><img
-                                src="https://covid19.ifce.edu.br/assets/img/line-yellow.bcc30269.svg" height="20px">
+                            <h6 style="text-align: center;">Suspeitos</h6>
                         </div>
                     </div>
                 </div>
             </div>
+                        
+            <div class="col-md-2 col-sm-12">
+                <div class="card bg-light">
+                    <div class="card-body">
+                        <div class="d-flex flex-column align-items-center">
+                            <h4 style="text-align: center;"><b style="color: rgb(0, 0, 0);"><?= $conf_total;?></b></h4>
+                            <h6 style="text-align: center;">Confirmados</h6>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            
             <div class="col-md-2 col-sm-12">
                 <div class="card bg-light">
                     <div class="card-body">
                         <div class="d-flex flex-column align-items-center">
                             <h4 style="text-align: center;"><b style="color: rgb(0, 0, 0);"><?= $descartados; ?></b>
                             </h4>
-                            <h6 style="text-align: center;">Descartados</h6><img
-                                src="https://covid19.ifce.edu.br/assets/img/line-grey.71250d05.svg" height="20px">
+                            <h6 style="text-align: center;">Descartados</h6>
                         </div>
                     </div>
                 </div>
@@ -118,8 +101,7 @@
                         <div class="d-flex flex-column align-items-center">
                             <h4 style="text-align: center;"><b style="color: rgb(0, 0, 0);"><?= $conf_recuperados;?></b>
                             </h4>
-                            <h6 style="text-align: center;">Curados</h6><img
-                                src="https://covid19.ifce.edu.br/assets/img/line-green.13487c8b.svg" height="20px">
+                            <h6 style="text-align: center;">Curados</h6>
                         </div>
                     </div>
                 </div>
@@ -129,8 +111,7 @@
                     <div class="card-body">
                         <div class="d-flex flex-column align-items-center">
                             <h4 style="text-align: center;"><b style="color: rgb(0, 0, 0);"><?= $conf_obitos;?></b></h4>
-                            <h6 style="text-align: center;">Óbitos</h6><img
-                                src="https://covid19.ifce.edu.br/assets/img/line-black.f665e799.svg" height="20px">
+                            <h6 style="text-align: center;">Óbitos</h6>
                         </div>
                     </div>
                 </div>
@@ -139,9 +120,8 @@
                 <div class="card bg-light">
                     <div class="card-body">
                         <div class="d-flex flex-column align-items-center">
-                            <h4 style="text-align: center;"><b style="color: rgb(0, 0, 0);">1.28%</b></h4>
-                            <h6 style="text-align: center;">Letalidade</h6><img
-                                src="https://covid19.ifce.edu.br/assets/img/line-red.954b705a.svg" height="20px">
+                            <h4 style="text-align: center;"><b style="color: rgb(0, 0, 0);"><?= $letalidade;?>%</b></h4>
+                            <h6 style="text-align: center;">Letalidade</h6>
                         </div>
                     </div>
                 </div>
@@ -149,9 +129,23 @@
         </div>
 
 
-
     </div>
 
+    <div class="container mt-3 px-5">
+
+        <div class="card border border-danger">
+            <span class="rounded">
+
+                Última Atualização: <strong><?php echo $dia; ?></strong> às
+                <strong><?php echo $atualiza[1]; ?></strong>. -
+                Dados da Secretaria Municipal de Saúde (SESA) através do
+                <a href="https://covid19.ifce.edu.br/#/informacoes">Painel COVID-19 </a> desenvolvido pelo Laboratório
+                de Pesquisa, Inovação e Software(LAPIS) do IFCE - campus Tabuleiro do Norte. </span>
+
+        </div>
+
+
+    </div>
 
 </body>
 

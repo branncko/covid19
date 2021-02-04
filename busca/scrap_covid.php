@@ -38,6 +38,10 @@
                     $conf_total = $conf_isolados + $conf_recuperados + $conf_obitos;
                     $notificacoes = $conf_total + $susp_total + $descartados ; 
                     $letalidade = $conf_obitos * 100 / $conf_total;
+                    $letalidade = number_format($letalidade, 2, '.', '');
+
+                    //var_dump($letalidade);
+
 
                    
                   
