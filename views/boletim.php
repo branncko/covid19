@@ -32,13 +32,13 @@
 		<div class="container-scroller">
 			<!-- partial:../../partials/_navbar.html -->
 			<nav class="navbar default-layout col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
-			<?php require_once "../includes/top-menu.php" ?>
+			<?php require_once "../includes/top-menu.php"; ?>
 			</nav>
 			<!-- partial -->
 			<div class="container-fluid page-body-wrapper">
 				<!-- partial:../../partials/_sidebar.html -->
 				<nav class="sidebar sidebar-offcanvas" id="sidebar">
-				<?php require_once "../includes/side-menu.php" ?>	
+				<?php require_once "../includes/side-menu.php"; ?>	
 				</nav>
 				<div class="main-panel">
 					<div class="content-wrapper">
@@ -47,7 +47,7 @@
 								<div class="page-header">
 									<h4 class="page-title">Boletim</h4>
 									<div class="quick-link-wrapper w-100 d-md-flex flex-md-wrap">
-										<?php require_once "../includes/quick-links.php" ?>
+										<?php require_once "../includes/quick-links.php"; ?>
 									</div>
 								</div>
 							</div>
