@@ -13,7 +13,7 @@
     <style>
     body {
 
-        background-image: radial-gradient(circle, rgba(44, 156, 149, 0.9864145487296481) 48%, rgba(3, 53, 41, 1) 100%), url('covid19.png');
+        background-image: radial-gradient(circle, rgba(44, 156, 149, 0.9864145487296481) 48%, rgba(3, 53, 41, 1) 100%), url('img/covid19.png');
         background-size: cover;
         background-blend-mode: multiply;
     }
