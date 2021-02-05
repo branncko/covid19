@@ -31,7 +31,7 @@
 
                   $data = date('D');
                   $mes = date('M');
-                  $dia = date('d');
+                  $day = date('d');
                   $ano = date('Y');
 
                   $semana = array(

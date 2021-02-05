@@ -34,9 +34,25 @@
     .bg-recuperados {
         background-color: #479B04;
     }
+
+    .bg-obitos {
+        background-color: #000000;
+    }
+
+    .bg-reinfectados {
+        background-color: #f15d00;
+    }
+
+    .bg-hospitalizados {
+        background-color: #9f0644;
+    }
+
+    .bg-isolados {
+        background-color: #045752;
+    }
     </style>
 
-   
+
 </head>
 
 <body>
@@ -50,14 +66,15 @@
                 <h2 class="p-3">BOLETIM DIÁRIO CORONAVÍRUS :: COVID-19</h2>
             </div>
 
-            <div class="col-md-3 col-sm-12">
-                <div class="card bg-light">
+            <div class="col-md-3 col-sm-8 offset-lg rounded-circle">
+                <div class="card bg-transparent border-success">
                     <div class="card-body p-0">
                         <div class="flex-column align-items-center">
-                            <h2 style="text-align: center;"><b style="color: rgb(0, 0, 0);"><?php echo date('d'); ?></b>
+                            <h2 style="text-align: center;"><b
+                                    class="text-white"><?php echo date('d'); ?>/<?= $mes_extenso["$mes"]; ?></b>
                             </h2>
-                            <div class="card-footer text-white bg-secondary p-1">
-                                <h6 style="text-align: center;"><?php echo $mes_extenso["$mes"]; ?></h6>
+                            <div class="card-footer text-white bg-success p-1">
+                                <h6 style="text-align: center;"><?= $semana["$data"]; ?></h6>
                             </div>
                         </div>
                     </div>
@@ -65,12 +82,12 @@
             </div>
 
         </div>
+        <hr class="m-3 border-white">
 
 
+        <div class="row card-group">
 
-        <div class="row card-group mb-3">
-
-            <div class="col-md-4 col-sm-12">
+            <div class="col-md-4 col-sm-12 p-2">
                 <div class="card bg-light">
                     <div class="card-body p-0">
                         <div class="flex-column align-items-center">
@@ -84,12 +101,11 @@
                 </div>
             </div>
 
-            <div class="col-md-4 col-sm-12">
+            <div class="col-md-4 col-sm-12 p-2">
                 <div class="card bg-light">
                     <div class="card-body p-0">
                         <div class=" flex-column align-items-center">
-                            <h2 style="text-align: center;"><b style="color: rgb(0, 0, 0);"><?= $susp_total;?></b>
-                            </h2>
+                            <h2 style="text-align: center;"><b style="color: rgb(0, 0, 0);"><?= $susp_total;?></b> </h2>
                             <div class="card-footer text-white bg-suspeitos p-1">
                                 <h6 style="text-align: center;">Suspeitos</h6>
                             </div>
@@ -98,7 +114,7 @@
                 </div>
             </div>
 
-            <div class="col-md-4 col-sm-12">
+            <div class="col-md-4 col-sm-12 p-2">
                 <div class="card bg-light">
                     <div class="card-body p-0">
                         <div class="flex-column align-items-center">
@@ -112,12 +128,11 @@
                 </div>
             </div>
 
-
         </div>
 
         <div class="row card-group">
 
-            <div class="col-md-8 col-sm-12">
+            <div class="col-md-4 col-sm-12 p-2">
                 <div class="card bg-light">
                     <div class="card-body p-0">
                         <div class="flex-column align-items-center">
@@ -130,8 +145,35 @@
                     </div>
                 </div>
             </div>
+            <div class="col-md-2 col-sm-12 p-2">
+                <div class="card bg-light">
+                    <div class="card-body p-0">
+                        <div class="flex-column align-items-center">
+                            <h2 style="text-align: center;"><b style="color: rgb(0, 0, 0);"><?= $conf_isolados;?></b>
+                            </h2>
+                            <div class="card-footer text-white bg-isolados p-1">
+                                <h6 style="text-align: center;">Isolados</h6>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-2 col-sm-12 p-2">
+                <div class="card bg-light">
+                    <div class="card-body p-0">
+                        <div class="flex-column align-items-center">
+                            <h2 style="text-align: center;"><b style="color: rgb(0, 0, 0);"><?= $conf_internados;?></b>
+                            </h2>
+                            <div class="card-footer text-white bg-hospitalizados p-1">
+                                <h6 style="text-align: center;">Hospitalizados</h6>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
-            <div class="col-md-4 col-sm-12">
+
+            <div class="col-md-4 col-sm-12 p-2">
                 <div class="card bg-light">
                     <div class="card-body p-0">
                         <div class="flex-column align-items-center">
@@ -147,6 +189,57 @@
 
 
         </div>
+
+        <div class="row card-group mb-3">
+
+            <div class="col-md-6 p-2">
+                <div class="card bg-light">
+                    <div class="card-body p-0">
+                        <div class="flex-column align-items-center">
+                            <h2 style="text-align: center;"><b style="color: rgb(0, 0, 0);"><?= $reinfectados;?></b>
+                            </h2>
+                            <div class="card-footer text-white bg-reinfectados p-1">
+                                <h6 style="text-align: center;">Reinfectados</h6>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6 p-2">
+                <div class="card bg-light">
+                    <div class="card-body p-0">
+                        <div class="flex-column align-items-center">
+                            <h2 style="text-align: center;"><b style="color: rgb(0, 0, 0);"><?= $conf_obitos;?></b>
+                            </h2>
+                            <div class="card-footer text-white bg-obitos p-1">
+                                <h6 style="text-align: center;">Óbitos</h6>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+        <hr class="m-3 border-white">
+
+        <div class="row px-5">
+
+        <div class="card border border-danger">
+            <span class="rounded p-3">
+
+                Última Atualização: <strong><?php echo $dia; ?></strong> às
+                <strong><?php echo $atualiza[1]; ?></strong> -
+                Dados da Secretaria Municipal de Saúde (SESA) através do
+                <a target="_blank" href="https://covid19.ifce.edu.br/#/cidade/30/">Painel COVID-19 </a> desenvolvido pelo Laboratório
+                de Pesquisa, Inovação e Software(LAPIS) do IFCE - campus Tabuleiro do Norte. </span>
+
+        </div>
+
+        </div>
+
+
 
 
 
