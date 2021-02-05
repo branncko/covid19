@@ -192,7 +192,7 @@
 
         <div class="row card-group mb-3">
 
-            <div class="col-md-6 p-2">
+        <div class="col-md-4 col-sm-12 p-2">
                 <div class="card bg-light">
                     <div class="card-body p-0">
                         <div class="flex-column align-items-center">
@@ -206,7 +206,7 @@
                 </div>
             </div>
 
-            <div class="col-md-6 p-2">
+            <div class="col-md-4 col-sm-12 p-2">
                 <div class="card bg-light">
                     <div class="card-body p-0">
                         <div class="flex-column align-items-center">
@@ -220,11 +220,25 @@
                 </div>
             </div>
 
+            <div class="col-md-4 col-sm-12 p-2">
+                <div class="card bg-light">
+                    <div class="card-body p-0">
+                        <div class="flex-column align-items-center">
+                            <h2 style="text-align: center;"><b style="color: rgb(0, 0, 0);"><?= $letalidade;?>%</b>
+                            </h2>
+                            <div class="card-footer text-white bg-obitos p-1">
+                                <h6 style="text-align: center;">Taxa de Letalidade</h6>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
 
         </div>
         <hr class="m-3 border-white">
 
-        <div class="row px-5">
+        <div class="row px-5 mb-3">
 
         <div class="card border border-danger">
             <span class="rounded p-3">
@@ -238,9 +252,6 @@
         </div>
 
         </div>
-
-
-
 
 
 </body>
