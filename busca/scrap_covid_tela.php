@@ -26,7 +26,7 @@
 
         <h2 class="p-3">Município: <?= $municipio ;?> </h2>
 
-        <div class="card ">
+        <div class="card">
             <p class="p-3">
 
 
