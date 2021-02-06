@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="refresh" content=120>
     <title>Painel covid19 - CRUZ-CE</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
         integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
@@ -87,7 +88,7 @@
 
         <div class="row card-group">
 
-            <div class="col-md-4 col-sm-12 p-2">
+            <div class="col-md-3 col-sm-12 p-2">
                 <div class="card bg-light">
                     <div class="card-body p-0">
                         <div class="flex-column align-items-center">
@@ -101,11 +102,14 @@
                 </div>
             </div>
 
-            <div class="col-md-4 col-sm-12 p-2">
+
+            <div class="col-md-3 col-sm-12 p-2">
                 <div class="card bg-light">
                     <div class="card-body p-0">
-                        <div class=" flex-column align-items-center">
-                            <h2 style="text-align: center;"><b style="color: rgb(0, 0, 0);"><?= $susp_total;?></b> </h2>
+                        <div class="flex-column align-items-center">
+                            <h2 style="text-align: center;"><b style="color: rgb(0, 0, 0);"><?= $susp_total;?></b>
+                            </h2>
+
                             <div class="card-footer text-white bg-suspeitos p-1">
                                 <h6 style="text-align: center;">Suspeitos</h6>
                             </div>
@@ -114,7 +118,40 @@
                 </div>
             </div>
 
-            <div class="col-md-4 col-sm-12 p-2">
+
+
+            <div class="col-md-2 col-sm-12 p-2">
+                <div class="card bg-light">
+                    <div class="card-body p-0">
+                        <div class="flex-column align-items-center">
+                            <h2 style="text-align: center;"><b style="color: rgb(0, 0, 0);"><?= $susp_isolados;?></b>
+                            </h2>
+
+                            <div class="card-footer text-white bg-suspeitos p-1">
+                                <h6 style="text-align: center;">Isolados</h6>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-2 col-sm-12 p-2">
+                <div class="card bg-light">
+                    <div class="card-body p-0">
+                        <div class="flex-column align-items-center">
+                            <h2 style="text-align: center;"><b style="color: rgb(0, 0, 0);"><?= $susp_internados;?></b>
+                            </h2>
+
+                            <div class="card-footer text-white bg-suspeitos p-1">
+                                <h6 style="text-align: center;">Hospitalizados</h6>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="col-md-2 col-sm-12 p-2">
                 <div class="card bg-light">
                     <div class="card-body p-0">
                         <div class="flex-column align-items-center">
@@ -192,7 +229,7 @@
 
         <div class="row card-group mb-3">
 
-        <div class="col-md-4 col-sm-12 p-2">
+            <div class="col-md-4 col-sm-12 p-2">
                 <div class="card bg-light">
                     <div class="card-body p-0">
                         <div class="flex-column align-items-center">
@@ -233,25 +270,28 @@
                     </div>
                 </div>
             </div>
-            
+
 
         </div>
         <hr class="m-3 border-white">
 
         <div class="row px-5 mb-3">
 
-        <div class="card border border-danger">
-            <span class="rounded p-3">
+            <div class="card border border-danger">
+                <span class="rounded p-3">
 
-                Última Atualização: <strong><?php echo $dia; ?></strong> às
-                <strong><?php echo $atualiza[1]; ?></strong> -
-                Dados da Secretaria Municipal de Saúde (SESA) através do
-                <a target="_blank" href="https://covid19.ifce.edu.br/#/cidade/30/">Painel COVID-19 </a> desenvolvido pelo Laboratório
-                de Pesquisa, Inovação e Software(LAPIS) do IFCE - campus Tabuleiro do Norte. </span>
+                    Última Atualização: <strong><?php echo $dia; ?></strong> às
+                    <strong><?php echo $atualiza[1]; ?></strong> -
+                    Dados da Secretaria Municipal de Saúde (SESA) através do
+                    <a target="_blank" href="https://covid19.ifce.edu.br/#/cidade/30/">Painel COVID-19 </a> desenvolvido
+                    pelo Laboratório
+                    de Pesquisa, Inovação e Software(LAPIS) do IFCE - campus Tabuleiro do Norte. </span>
+
+            </div>
 
         </div>
 
-        </div>
+        
 
 
 </body>
