@@ -24,6 +24,10 @@
         font-weight: 700;
     }
 
+    #data b {
+        font-size: 1.8rem;
+    }
+
     .bg-suspeitos {
         background-color: #C59D00;
     }
@@ -63,15 +67,15 @@
     <div class="container">
 
         <div class="row m-3">
-            <div class="col-md-9 col-sm-12">
+            <div class="col-md-9 col-sm-12  offset-lg">
                 <h2 class="p-3">BOLETIM DIÁRIO CORONAVÍRUS :: COVID-19</h2>
             </div>
 
-            <div class="col-md-3 col-sm-8 offset-lg">
+            <div class="col-md-3 col-sm-12 offset-lg">
                 <div class="card bg-transparent border-success">
                     <div class="card-body p-0">
                         <div class="flex-column align-items-center">
-                            <h2 style="text-align: center;"><b
+                            <h2 id="data" style="text-align: center;"><b
                                     class="text-white"><?php echo date('d'); ?>/<?= $mes_extenso["$mes"]; ?></b>
                             </h2>
                             <div class="card-footer text-white bg-success p-1">
