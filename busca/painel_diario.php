@@ -19,7 +19,7 @@
         background-blend-mode: multiply;
     }
 
-    h2 {
+    .amarelo {
         color: #FEC22D;
         font-weight: 700;
     }
@@ -64,19 +64,20 @@
     <?php include_once "variaveis.php"; ?>
 
 
-    <div class="container">
+    <div class="container mb-2">
 
         <div class="row m-3">
-            <div class="col-md-9 col-sm-12  offset-lg">
-                <h2 class="p-3">BOLETIM DIÁRIO CORONAVÍRUS :: COVID-19</h2>
+            <div class="col-md-9 col-sm-12 offset-lg">
+                <h2 class="p-3 h5 amarelo" style="text-align: center;"><small>Boletim Epidemiológico </small> <br>Doença
+                    pelo novo coronavírus (COVID-19)</h2>
             </div>
 
             <div class="col-md-3 col-sm-12 offset-lg">
                 <div class="card bg-transparent border-success">
                     <div class="card-body p-0">
                         <div class="flex-column align-items-center">
-                            <h2 id="data" style="text-align: center;"><b
-                                    class="text-white"><?php echo date('d'); ?>/<?= $mes_extenso["$mes"]; ?></b>
+                            <h2 id="data" style="text-align: center;"><b class="text-white"><?php echo date('d'); ?> /
+                                    <?= $mes_extenso["$mes"]; ?></b>
                             </h2>
                             <div class="card-footer text-white bg-success p-1">
                                 <h6 style="text-align: center;"><?= $semana["$data"]; ?></h6>
@@ -282,24 +283,24 @@
         </div>
         <hr class="m-3 border-white">
 
-        <div class="row px-5 mb-3">
+        <div class="row px-5">
 
-            <div class="card border border-danger">
-                <span class="rounded p-3">
+            <div class="card border border-danger m-auto">
+                <span class="rounded p-3">Última Atualização: <strong><?php echo $dia; ?></strong> às
+                    <strong><?php echo $atualiza[1]; ?></strong> - <small> Dados da Secretaria Municipal de Saúde (SESA)
+                        através do
+                        <a target="_blank" href="https://covid19.ifce.edu.br/#/cidade/30/">Painel COVID-19 </a>
+                        desenvolvido
+                        pelo Laboratório
+                        de Pesquisa, Inovação e Software(LAPIS) do IFCE - campus Tabuleiro do Norte.
 
-                    Última Atualização: <strong><?php echo $dia; ?></strong> às
-                    <strong><?php echo $atualiza[1]; ?></strong> -
-                    Dados da Secretaria Municipal de Saúde (SESA) através do
-                    <a target="_blank" href="https://covid19.ifce.edu.br/#/cidade/30/">Painel COVID-19 </a> desenvolvido
-                    pelo Laboratório
-                    de Pesquisa, Inovação e Software(LAPIS) do IFCE - campus Tabuleiro do Norte. </span>
+
+                    </small> </span>
 
             </div>
 
         </div>
-
-        
-
+    </div>
 
 </body>
 
