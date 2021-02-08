@@ -67,7 +67,7 @@
                 <h2 class="p-3">BOLETIM DIÁRIO CORONAVÍRUS :: COVID-19</h2>
             </div>
 
-            <div class="col-md-3 col-sm-8 offset-lg rounded-circle">
+            <div class="col-md-3 col-sm-8 offset-lg">
                 <div class="card bg-transparent border-success">
                     <div class="card-body p-0">
                         <div class="flex-column align-items-center">
@@ -119,7 +119,6 @@
             </div>
 
 
-
             <div class="col-md-2 col-sm-12 p-2">
                 <div class="card bg-light">
                     <div class="card-body p-0">
@@ -167,6 +166,8 @@
 
         </div>
 
+        <hr class="m-3 border-white">
+
         <div class="row card-group">
 
             <div class="col-md-4 col-sm-12 p-2">
@@ -188,7 +189,7 @@
                         <div class="flex-column align-items-center">
                             <h2 style="text-align: center;"><b style="color: rgb(0, 0, 0);"><?= $conf_isolados;?></b>
                             </h2>
-                            <div class="card-footer text-white bg-isolados p-1">
+                            <div class="card-footer text-white bg-confirmados p-1">
                                 <h6 style="text-align: center;">Isolados</h6>
                             </div>
                         </div>
@@ -201,7 +202,7 @@
                         <div class="flex-column align-items-center">
                             <h2 style="text-align: center;"><b style="color: rgb(0, 0, 0);"><?= $conf_internados;?></b>
                             </h2>
-                            <div class="card-footer text-white bg-hospitalizados p-1">
+                            <div class="card-footer text-white bg-confirmados p-1">
                                 <h6 style="text-align: center;">Hospitalizados</h6>
                             </div>
                         </div>
@@ -226,6 +227,8 @@
 
 
         </div>
+
+        <hr class="m-3 border-white">
 
         <div class="row card-group mb-3">
 
