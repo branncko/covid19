@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Redirecionando para o BOLETIM DIÁRIO CORONAVÍRUS :: COVID-19</title>
-    <meta http-equiv="refresh" content=120;url="painel_diario.php">
+    <meta http-equiv="refresh" content=05;url="painel_diario.php">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
@@ -14,151 +14,131 @@
     </script>
 
     <style>
-    .externa {
-        position: relative;
-        width: 100%;
-        height: 200px;
-        background: red;
+    :root {
+        --effect: hover 1s linear infinite;
     }
 
-    .interna {
-        left: 50%;
-        top: 50%;
-        margin-left: -100px;
-        /* Metade do valor da Largura */
-        margin-top: -50px;
-        /* Metade da valor da Altura */
-        position: absolute;
-        width: 200px;
-        /* Valor da Largura */
-        height: 100px;
-        /* Valor da Altura */
-        background: #507701;
-        color: #fff;
-    }
-
-    /*
- * Baseline styles
- */
-    body {
-        background: #14753c;
-        text-align: center;
-        padding: 15%;
-    }
-
-    h1 {
-        color: #ccc;
+    * {
         margin: 0;
-        font-size: 1.8em;
-        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-        text-transform: uppercase;
-        letter-spacing: .1em;
     }
 
-    /*
- * Loading Dots
- * Can we use pseudo elements here instead :after?
- */
-    .loading span {
+    body {
+        display: flex;
+        width: 100vw;
+        height: 100vh;
+        background: black;
+        align-items: center;
+        justify-content: center;
+    }
+
+    div {
+        text-align: center;
+    }
+
+    p {
         display: inline-block;
-        vertical-align: middle;
-        width: .6em;
-        height: .6em;
-        margin: .19em;
-        background: #007DB6;
-        border-radius: .6em;
-        animation: loading 1s infinite alternate;
-    }
-
-    /*
- * Dots Colors
- * Smarter targeting vs nth-of-type?
- */
-    .loading span:nth-of-type(2) {
-        background: #008FB2;
-        animation-delay: 0.2s;
-    }
-
-    .loading span:nth-of-type(3) {
-        background: #009B9E;
-        animation-delay: 0.4s;
-    }
-
-    .loading span:nth-of-type(4) {
-        background: #00A77D;
-        animation-delay: 0.6s;
-    }
-
-    .loading span:nth-of-type(5) {
-        background: #00B247;
-        animation-delay: 0.8s;
-    }
-
-    .loading span:nth-of-type(6) {
-        background: #5AB027;
-        animation-delay: 1.0s;
-    }
-
-    .loading span:nth-of-type(7) {
-        background: #A0B61E;
-        animation-delay: 1.2s;
-    }
-
-    /*
- * Animation keyframes
- * Use transition opacity instead of keyframes?
- */
-    @keyframes loading {
-        0% {
-            opacity: 0;
-        }
-
-        100% {
-            opacity: 1;
-        }
-    }
-
-    .bottom {
-        margin-bottom: 80px;
-    }
-
-    .by {
-        margin-top: 30px;
-        color: #fff;
-        font-family: verdana;
-        font-size: .6em;
         text-transform: uppercase;
+        text-align: center;
+        font-size: 4em;
+        font-family: arial;
+        font-weight: 600;
+        transform: scale(.5);
+        color: #121212;
+        -webkit-text-stroke: 2px gray;
+    }
+
+    p:nth-child(1) {
+        animation: var(--effect);
+    }
+
+    p:nth-child(2) {
+        animation: var(--effect) .125s;
+    }
+
+    p:nth-child(3) {
+        animation: var(--effect) .25s;
+    }
+
+    p:nth-child(4) {
+        animation: var(--effect) .375s;
+    }
+
+    p:nth-child(5) {
+        animation: var(--effect) .5s;
+    }
+
+    p:nth-child(6) {
+        animation: var(--effect) .675s;
+    }
+
+    p:nth-child(7) {
+        animation: var(--effect) .75s;
+    }
+
+    p:nth-child(8) {
+        animation: var(--effect) .98s;
+    }
+
+    p:nth-child(9) {
+        animation: var(--effect) 1.1s;
+    }
+
+    p:nth-child(10) {
+        animation: var(--effect) 1.15s;
+    }
+
+    @keyframes hover {
+        0% {
+            transform: scale(.5);
+            color: #121212;
+            -webkit-text-stroke: 2px gray;
+        }
+
+        20% {
+            transform: scale(1);
+            color: pink;
+            -webkit-text-stroke: 3px red;
+            filter: drop-shadow(0 0 1px black)drop-shadow(0 0 1px black)drop-shadow(0 0 3px red)drop-shadow(0 0 5px red)hue-rotate(10turn);
+        }
+
+        50% {
+            transform: scale(.5);
+            color: #121212;
+            -webkit-text-stroke: 2px gray;
+        }
     }
     </style>
-
 </head>
 
 <body>
 
-    <div class="container-md">
-        <div class="row">
-            <div class="loading mb-3">
-                <h1>CARREGANDO BOLETIM ATUALIZADO :: COVID-19...</h1>
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
+    <div class="container-md m-5">
+        <div class="row rounded card p-3">
+            <h1>Painel Epidemiológico CORONAVÍRUS</h1>
+
+        </div>
+
+        <div>
+            <p>C</p>
+            <p>A</p>
+            <p>R</p>
+            <p>R</p>
+            <p>E</p>
+            <p>G</p>
+            <p>A</p>
+            <p>N</p>
+            <p>D</p>
+            <p>O</p>
+
         </div>
 
 
-
     </div>
 
-    <div class="container-md">
 
 
-    </div>
 
-    
+
 
 </body>
 
