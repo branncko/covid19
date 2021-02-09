@@ -2,7 +2,7 @@
 	include '../conecta.php'; 
 
 	//Selecionar os decretos a serem apresentado na página
-	$result_vacinas = "SELECT * FROM vacinometro ORDER BY vac_data_vacinacao_dose1 DESC";
+	$result_vacinas = "SELECT * FROM vacinometro ORDER BY vac_data_vacinacao DESC";
 	$resultado_vacinas = mysqli_query($mysqli_connection, $result_vacinas);
 ?>
 <!DOCTYPE html>
@@ -36,6 +36,18 @@
     <script src="../assets/vendors/js/vendor.bundle.addons.js"></script>
     <script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
     <script src="../assets/js/datatables-bootstrap.js"></script>
+
+    <style>
+    .caracteres {
+        max-width: 30ch;
+        /*font-size: 12px;*/
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+    </style>
+
+
 </head>
 
 <body>
@@ -62,6 +74,55 @@
                             </div>
                         </div>
                     </div>
+
+                    <div class="row">
+
+                        <div class="col-md-12 grid-margin stretch-card">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h4 class="card-title">BEM VINDO AO VACINÔMETRO DA PREFEITURA DE CRUZ</h4>
+                                    <p class="card-description"> <code> Última Atualização: <strong>09/02/2021</strong> às <strong>19:21:08</strong>
+        - Dados da Secretaria Municipal de Saúde (SESA).</code></p>
+                                    <div class="row">
+                                        <div class="col-lg-4 col-md-6">
+                                            <div class="d-flex">
+                                                <div class="wrapper">
+                                                    <h2 class="font-weight-semibold mb-0">342</h2>
+                                                    <div class="d-flex align-items-center pb-2">
+                                                        <div class="dot-indicator bg-success mr-2"></div>
+                                                        <p class="mb-0">Vacinas Recebidas</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-4 col-md-6 mt-md-0 mt-4">
+                                            <div class="d-flex">
+                                                <div class="wrapper">
+                                                    <h2 class="font-weight-semibold mb-0">342</h2>
+                                                    <div class="d-flex align-items-center pb-2">
+                                                        <div class="dot-indicator bg-primary mr-2"></div>
+                                                        <p class="mb-0">Doses Aplicadas</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-4 col-md-6 mt-md-0 mt-4">
+                                            <div class="d-flex">
+                                                <div class="wrapper">
+                                                    <h2 class="font-weight-semibold mb-0">100%</h2>
+                                                    <div class="d-flex align-items-center pb-2">
+                                                        <div class="dot-indicator bg-info mr-2"></div>
+                                                        <p class="mb-0">Doses Aplicadas</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
                     <div class="row">
                         <div class="col-md-12 grid-margin stretch-card">
                             <div class="card">
@@ -85,25 +146,30 @@
                                                 <?php while($row_vacinas = mysqli_fetch_assoc($resultado_vacinas)){ ?>
                                                 <tr>
 
-                                                    <td class="font-weight-medium p-1">
-                                                        <?php echo $row_vacinas['vac_data_vacinacao_dose1']; ?><br> FASE
+                                                    <td style="font-size:12px;" class="h8 p-1">
+                                                        <strong>
+                                                            <?php echo $row_vacinas['vac_data_vacinacao']; ?></strong><br>
+                                                        FASE
                                                         1
                                                     </td>
-                                                    <td class="font-weight-medium">
-                                                        <?php echo $row_vacinas['vac_vacinado']; ?></td>
-                                                    <td class="font-weight-medium">
-                                                        <?php echo $row_vacinas['vac_categoria']; ?> <br>
+                                                    <td style="font-size:12px;" class="h8">
+                                                        <strong><?php echo $row_vacinas['vac_vacinado']; ?></strong>
+                                                    </td>
+                                                    <td style="font-size:12px;" class="caracteres h8">
+                                                        <strong><?php echo $row_vacinas['vac_categoria']; ?></strong>
+                                                        <br>
                                                         <?php echo $row_vacinas['vac_grupo_atendimento']; ?>
 
                                                     </td>
-                                                    <td class="font-weight-medium">
-                                                        <?php echo $row_vacinas['vac_vacina']; ?> / D1 <br>
+                                                    <td style="font-size:12px;" class="caracteres h8">
+                                                        <strong> <?php echo $row_vacinas['vac_vacina']; ?> -
+                                                            <?= $row_vacinas['vac_dose'];?> DOSE </strong><br>
                                                         <?php echo $row_vacinas['vac_vacinador']; ?>
 
 
                                                     </td>
-                                                    <td class="font-weight-medium"><button type="button"
-                                                            class="btn btn-primary" data-toggle="modal"
+                                                    <td class="h8"><button type="button" class="btn btn-primary"
+                                                            data-toggle="modal"
                                                             data-target="#detalhes-<?php echo $row_vacinas['id']; ?>">+</button>
                                                     </td>
                                                 </tr>
@@ -115,7 +181,7 @@
                                                         <div class="modal-content">
                                                             <div class="modal-header">
                                                                 <h4 class="h4">Informações Principais
-                                                                    </h4>
+                                                                </h4>
 
                                                                 <button type="button" class="close" data-dismiss="modal"
                                                                     aria-label="Close">
@@ -126,21 +192,29 @@
                                                                 <p class="card-description margin-bottom-zero">
 
                                                                 <ul>
-                                                                    <li>Data aplicação: 27/01/2021
+                                                                    <li>Data aplicação:
+                                                                        <?php echo $row_vacinas['vac_data_vacinacao']; ?>
                                                                     </li>
                                                                     <li>
-                                                                        Beneficiário: ADALGISA MARIA DE SOUSA
+                                                                        Vacinado:
+                                                                        <?php echo $row_vacinas['vac_vacinado']; ?>
                                                                     </li>
-                                                                    <li>Data de nascimento: 24/12/1975</li>
-                                                                    <li>Idade: 45</li>
-                                                                    <li>Unidade: Lourenço Martins de Almeida</li>
-                                                                    <li>Dose: 1ª DOSE</li>
-                                                                    <li>Fase: 1ª FASE</li>
-                                                                    <li>Categoria: 1 - PROFISSIONAIS DA SAÚDE</li>
-                                                                    <li>Categoria sub: ACS, ACE, VISITADORES
-                                                                        DOMICILIARES,
-                                                                        ENFERMEIROS, TÉCNICOS DE ENFERMAGEM E MÉDICOS DA
-                                                                        ESF.</li>
+                                                                    <li>Data de nascimento:
+                                                                        <?php echo $row_vacinas['vac_data_nascimento']; ?>
+                                                                    </li>
+                                                                    <li>Unidade:
+                                                                        <?php echo $row_vacinas['vac_estabelecimento']; ?>
+                                                                    </li>
+                                                                    <li>Dose: <?php echo $row_vacinas['vac_dose']; ?>
+                                                                    </li>
+                                                                    <li>Fase: <?php echo $row_vacinas['vac_fase']; ?>
+                                                                    </li>
+                                                                    <li>Categoria:
+                                                                        <?php echo $row_vacinas['vac_categoria']; ?>
+                                                                    </li>
+                                                                    <li>Categoria sub:
+                                                                        <?php echo $row_vacinas['vac_grupo_atendimento']; ?>
+                                                                    </li>
 
                                                                 </ul>
 
@@ -149,8 +223,13 @@
                                                                 </h4>
                                                                 <p>
                                                                 <ul>
-                                                                    <li>Vacina: Butantan/CoronaVac</li>
-                                                                    <li>Vacinador: RITA DE CASSIA CAMINHA SOUZA</li>
+                                                                    <li>Vacina:
+                                                                        <?php echo $row_vacinas['vac_vacina']; ?></li>
+                                                                    <li>Lote:
+                                                                        <?php echo $row_vacinas['vac_lote']; ?></li>
+                                                                    <li>Vacinador:
+                                                                        <?php echo $row_vacinas['vac_vacinador']; ?>
+                                                                    </li>
                                                                 </ul>
 
 
@@ -199,7 +278,7 @@
             "bInfo": false,
             "ordering": false,
             "language": {
-                "searchPlaceholder": "Pesquisa geral...",
+                "searchPlaceholder": "Pesquisar vacinados...",
                 "sEmptyTable": "Nenhuma informação encontrada",
                 "sInfo": "Mostrando de _START_ até _END_ de _TOTAL_ vacinas",
                 "sInfoEmpty": "Mostrando 0 até 0 de 0 vacinas",

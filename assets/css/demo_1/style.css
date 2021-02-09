@@ -871,7 +871,9 @@
 #pacientes_filter label, 
 #pacientes_filter input,
 #decretos_filter label,
+#vacinas_filter label,
 #decretos_filter input,
+#vacinas_filter input,
 #recomendacoes_filter label,
 #recomendacoes_filter input {
 	width: 100%;
