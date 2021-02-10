@@ -2,70 +2,60 @@
 
 include '../conecta.php';
 include_once '../busca/variaveis.php';
-	$result_boletim 	= "SELECT * FROM boletim ORDER BY dia DESC LIMIT 1";
-	$resultado_boletim  = $mysqli_connection->query($result_boletim) or die($mysqli_connection->error);
+	$result_boletim 	= "SELECT * FROM boletim ORDER BY dia DESC LIMIT 5";
+    $resultado_boletim  = $mysqli_connection->query($result_boletim) or die($mysqli_connection->error);
+    
+    var_dump($resultado_boletim);
 
 
 echo $letalidade . "<br>";
 echo $notificacoes . "<br>"; 
 echo $dia . "<br>"; 
 echo $atualiza[1];
+
+$campo01 = date('d/m/Y', strtotime($row_boletim['dia']));
+
+echo $campo01;
 ?>
 
-<?php while($row_boletim = $resultado_boletim->fetch_array()) { ?>
-<h4 class="card-title">BOLETIM EPIDEMIOLÓGICO DO NOVO CORONAVÍRUS (COVID-19)</h4>
-<p class="card-description"> <code> Última Atualização: <strong><?php echo $dia; ?></strong> às <strong><?php echo $atualiza[1]; ?></strong>
-                - Dados da Secretaria Municipal de Saúde (SESA).</code></p>
-<div class="row">
-    <div class="col-lg-3 col-md-6">
-        <div class="d-flex">
-            <div class="wrapper">
-                <h2 class="font-weight-semibold mb-0"><?= $susp_total;?></h2>
-                <div class="d-flex align-items-center pb-2">
-                    <div class="dot-indicator bg-warning mr-2"></div>
-                    <p class="mb-0">Casos Suspeitos</p>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="col-lg-3 col-md-6 mt-md-0 mt-4">
-        <div class="d-flex">
-            <div class="wrapper">
-                <h2 class="font-weight-semibold mb-0"><?= $conf_total;?></h2>
-                <div class="d-flex align-items-center pb-2">
-                    <div class="dot-indicator bg-danger mr-2"></div>
-                    <p class="mb-0">Casos Confirmados</p>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="col-lg-3 col-md-6 mt-md-0 mt-4">
-        <div class="d-flex">
-            <div class="wrapper">
-                <h2 class="font-weight-semibold mb-0"><?= $descartados; ?></h2>
-                <div class="d-flex align-items-center pb-2">
-                    <div class="dot-indicator bg-success mr-2"></div>
-                    <p class="mb-0">Casos Descartados</p>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="col-lg-3 col-md-6 mt-md-0 mt-4">
-        <div class="d-flex">
-            <div class="wrapper">
-                <h2 class="font-weight-semibold mb-0"><?= $conf_obitos;?></h2>
-                <div class="d-flex align-items-center pb-2">
-                    <div class="dot-indicator bg-dark mr-2"></div>
-                    <p class="mb-0">Óbitos</p>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<?php } ?>
-<hr>
 
-<?php include_once "../views/tabela05.php" ;?>
+
+<table class="table table-hover">
+        <thead>
+            <tr>
+                <th>Data</th>
+                <th>Suspeitos</th>
+                <th>Confirmados</th>
+                <th>Descartados</th>
+                <th>Óbitos</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php while($row_boletim = $resultado_boletim->fetch_array()) { ?>
+            <tr>
+                <td><?php echo date('d/m/Y', strtotime($row_boletim['dia'])); ?>
+                <hr>
+                <?php echo date('H:i:s', strtotime($row_boletim['hora'])); ?>
+                </td>
+                <td class="">
+                    <strong><?php echo $row_boletim['suspeitos']; ?><i
+                            class="<?php echo $row_boletim['classe_suspeitos']; ?>"></i></strong>
+                </td>
+                <td class="">
+                    <strong><?php echo $row_boletim['confirmados']; ?><i
+                            class="<?php echo $row_boletim['classe_confirmados']; ?>"></i></strong>
+                </td>
+                <td class="">
+                    <strong><?php echo $row_boletim['descartados']; ?></strong>
+                </td>
+                <td class="">
+                    <strong><?php echo $row_boletim['obitos']; ?><i
+                            class="<?php echo $row_boletim['classe_obitos']; ?>"></i></strong>
+                </td>
+            </tr>
+            <?php } ?>
+        </tbody>
+    </table>
 
 
                     
