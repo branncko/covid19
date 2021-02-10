@@ -138,7 +138,7 @@
                                     <p class="card-description">
                                         <code>Informações relativas às pessoas já vacinadas contra a COVID-19 (Grupo Prioritário).</code>
                                     </p>
-                                    <div class="table table-responsive table-striped">
+                                    <div class="table-responsive">
                                         <table id="vacinas" class="table table-stretched">
                                             <thead>
                                                 <tr>
@@ -187,7 +187,7 @@
                                                     <div class="modal-dialog modal-dialog-centered" role="document">
                                                         <div class="modal-content">
                                                             <div class="modal-header">
-                                                                <h4 class="h4">Informações Principais
+                                                                <h4 class="h6">Informações Principais
                                                                 </h4>
 
                                                                 <button type="button" class="close" data-dismiss="modal"
@@ -211,9 +211,11 @@
                                                                     <li><strong>Unidade:</strong>
                                                                         <?php echo $row_vacinas['vac_estabelecimento']; ?>
                                                                     </li>
-                                                                    <li><strong>Dose:</strong> <?php echo $row_vacinas['vac_dose']; ?>
+                                                                    <li><strong>Dose:</strong>
+                                                                        <?php echo $row_vacinas['vac_dose']; ?>
                                                                     </li>
-                                                                    <li><strong>Fase:</strong> <?php echo $row_vacinas['vac_fase']; ?>
+                                                                    <li><strong>Fase:</strong>
+                                                                        <?php echo $row_vacinas['vac_fase']; ?>
                                                                     </li>
                                                                     <li><strong>Categoria:</strong>
                                                                         <?php echo $row_vacinas['vac_categoria']; ?>
@@ -222,13 +224,6 @@
                                                                         <?php echo $row_vacinas['vac_grupo_atendimento']; ?>
                                                                     </li>
 
-                                                                </ul>
-
-                                                                </p>
-                                                                <h4> Informações da vacina
-                                                                </h4>
-                                                                <p>
-                                                                <ul>
                                                                     <li><strong>Vacina:</strong>
                                                                         <?php echo $row_vacinas['vac_vacina']; ?></li>
                                                                     <li><strong>Lote:</strong>
@@ -236,12 +231,14 @@
                                                                     <li><strong>Vacinador:</strong>
                                                                         <?php echo $row_vacinas['vac_vacinador']; ?>
                                                                     </li>
+
+
+
                                                                 </ul>
 
-
-
-
                                                                 </p>
+
+
                                                             </div>
                                                             <div class="modal-footer">
                                                                 <button type="button" class="btn btn-secondary"
