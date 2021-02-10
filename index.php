@@ -162,6 +162,12 @@ include_once 'busca/variaveis.php';
 						</a>
 					</li>
 					<li class="nav-item">
+						<a class="nav-link" href="views/vacinometro.php">
+						<i class="menu-icon typcn typcn-shopping-bag"></i>
+						<span class="menu-title">Vacinômetro</span>
+						</a>
+					</li>
+					<li class="nav-item">
 						<a class="nav-link" href="https://esic.cruz.ce.gov.br" target="_blank">
 						<i class="menu-icon typcn typcn-bell"></i>
 						<span class="menu-title">e-SIC</span>

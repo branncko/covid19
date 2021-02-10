@@ -46,6 +46,11 @@
         text-overflow: ellipsis;
         white-space: nowrap;
     }
+
+    ol,
+    li {
+        list-style: none;
+    }
     </style>
 
 
@@ -133,7 +138,7 @@
                                     <p class="card-description">
                                         <code>Informações relativas às pessoas já vacinadas contra a COVID-19 (Grupo Prioritário).</code>
                                     </p>
-                                    <div class="table-responsive">
+                                    <div class="table table-responsive table-striped">
                                         <table id="vacinas" class="table table-stretched">
                                             <thead>
                                                 <tr>
@@ -152,7 +157,7 @@
                                                         <strong>
                                                             <?php echo $row_vacinas['vac_data_vacinacao']; ?></strong><br>
                                                         FASE <?php echo $row_vacinas['vac_fase']; ?>
-                                                
+
                                                     </td>
                                                     <td style="font-size:12px;" class="h8">
                                                         <strong><?php echo $row_vacinas['vac_vacinado']; ?></strong>
@@ -194,25 +199,26 @@
                                                                 <p class="card-description margin-bottom-zero">
 
                                                                 <ul>
-                                                                    <li>Data aplicação:
+                                                                    <li><strong>Data aplicação:</strong>
                                                                         <?php echo $row_vacinas['vac_data_vacinacao']; ?>
                                                                     </li>
                                                                     <li>
-                                                                        Vacinado:
+                                                                    <li><strong>Vacinado:</strong>
+
                                                                         <?php echo $row_vacinas['vac_vacinado']; ?>
                                                                     </li>
-                                                                
-                                                                    <li>Unidade:
+
+                                                                    <li><strong>Unidade:</strong>
                                                                         <?php echo $row_vacinas['vac_estabelecimento']; ?>
                                                                     </li>
-                                                                    <li>Dose: <?php echo $row_vacinas['vac_dose']; ?>
+                                                                    <li><strong>Dose:</strong> <?php echo $row_vacinas['vac_dose']; ?>
                                                                     </li>
-                                                                    <li>Fase: <?php echo $row_vacinas['vac_fase']; ?>
+                                                                    <li><strong>Fase:</strong> <?php echo $row_vacinas['vac_fase']; ?>
                                                                     </li>
-                                                                    <li>Categoria:
+                                                                    <li><strong>Categoria:</strong>
                                                                         <?php echo $row_vacinas['vac_categoria']; ?>
                                                                     </li>
-                                                                    <li>Categoria sub:
+                                                                    <li> <strong>Sub Categoria:</strong>
                                                                         <?php echo $row_vacinas['vac_grupo_atendimento']; ?>
                                                                     </li>
 
@@ -223,11 +229,11 @@
                                                                 </h4>
                                                                 <p>
                                                                 <ul>
-                                                                    <li>Vacina:
+                                                                    <li><strong>Vacina:</strong>
                                                                         <?php echo $row_vacinas['vac_vacina']; ?></li>
-                                                                    <li>Lote:
+                                                                    <li><strong>Lote:</strong>
                                                                         <?php echo $row_vacinas['vac_lote']; ?></li>
-                                                                    <li>Vacinador:
+                                                                    <li><strong>Vacinador:</strong>
                                                                         <?php echo $row_vacinas['vac_vacinador']; ?>
                                                                     </li>
                                                                 </ul>
@@ -239,7 +245,7 @@
                                                             </div>
                                                             <div class="modal-footer">
                                                                 <button type="button" class="btn btn-secondary"
-                                                                    data-dismiss="modal">Fechar</button>
+                                                                    data-dismiss="modal"> Fechar</button>
                                                             </div>
                                                         </div>
                                                     </div>
