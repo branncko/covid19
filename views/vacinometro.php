@@ -1,5 +1,6 @@
 <?php
-	include '../conecta.php'; 
+    include '../conecta.php'; 
+    include_once '../busca/variaveis.php';
 
 	//Selecionar os decretos a serem apresentado na página
 	$result_vacinas = "SELECT * FROM vacinometro ORDER BY vac_data_vacinacao DESC";
@@ -81,7 +82,8 @@
                             <div class="card">
                                 <div class="card-body">
                                     <h4 class="card-title">BEM VINDO AO VACINÔMETRO DA PREFEITURA DE CRUZ</h4>
-                                    <p class="card-description"> <code> Última Atualização: <strong>09/02/2021</strong> às <strong>19:21:08</strong>
+                                    <p class="card-description"> <code> Última Atualização: <strong><?php echo $dia; ?></strong> às
+                            <strong><?php echo $atualiza[1]; ?></strong>
         - Dados da Secretaria Municipal de Saúde (SESA).</code></p>
                                     <div class="row">
                                         <div class="col-lg-4 col-md-6">
@@ -149,8 +151,8 @@
                                                     <td style="font-size:12px;" class="h8 p-1">
                                                         <strong>
                                                             <?php echo $row_vacinas['vac_data_vacinacao']; ?></strong><br>
-                                                        FASE
-                                                        1
+                                                        FASE <?php echo $row_vacinas['vac_fase']; ?>
+                                                
                                                     </td>
                                                     <td style="font-size:12px;" class="h8">
                                                         <strong><?php echo $row_vacinas['vac_vacinado']; ?></strong>
@@ -199,9 +201,7 @@
                                                                         Vacinado:
                                                                         <?php echo $row_vacinas['vac_vacinado']; ?>
                                                                     </li>
-                                                                    <li>Data de nascimento:
-                                                                        <?php echo $row_vacinas['vac_data_nascimento']; ?>
-                                                                    </li>
+                                                                
                                                                     <li>Unidade:
                                                                         <?php echo $row_vacinas['vac_estabelecimento']; ?>
                                                                     </li>
