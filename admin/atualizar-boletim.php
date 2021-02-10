@@ -57,7 +57,7 @@
 									<div class="card-body">
 										<h4 class="card-title">INSIRA OS DADOS DO BOLETIM EPIDEMIOLÓGICO DIÁRIO</h4>
 										<p class="card-description"> <code>Insira os dados nos campos abaixo...</code></p>
-											<form class="forms-sample" method="POST" action="verifica-boletim.php">
+											<form class="forms-sample" method="POST" action="verifica-boletim-e-atualiza.php">
 												<div class="form-group">
 													<label for="InputData">Data</label>
 													<input type="date" class="form-control" id="InputData" name="dia" placeholder="Data">
