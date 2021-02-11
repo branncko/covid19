@@ -3,7 +3,7 @@
     include_once '../busca/variaveis.php';
 
 	//Selecionar os decretos a serem apresentado na página
-	$result_vacinas = "SELECT * FROM vacinometro ORDER BY vac_data_vacinacao DESC";
+	$result_vacinas = "SELECT * FROM vacinometro ORDER BY vac_data_vacinacao ASC";
 	$resultado_vacinas = mysqli_query($mysqli_connection, $result_vacinas);
 ?>
 <!DOCTYPE html>
