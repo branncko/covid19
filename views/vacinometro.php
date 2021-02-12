@@ -3,7 +3,7 @@
     include_once '../busca/variaveis.php';
 
 	//Selecionar os decretos a serem apresentado na página
-	$result_vacinas = "SELECT * FROM vacinometro ORDER BY vac_data_vacinacao ASC";
+	$result_vacinas = "SELECT * FROM vacinometro ORDER BY vac_data_vacinacao DESC";
 	$resultado_vacinas = mysqli_query($mysqli_connection, $result_vacinas);
 ?>
 <!DOCTYPE html>
@@ -154,8 +154,7 @@
                                                 <tr>
 
                                                     <td style="font-size:12px;" class="h8 p-1">
-                                                        <strong>
-                                                            <?php echo $row_vacinas['vac_data_vacinacao']; ?></strong><br>
+                                                        <?= date('d/m/Y', strtotime($row_vacinas['vac_data_vacinacao'])); ?></strong><br>
                                                         FASE <?php echo $row_vacinas['vac_fase']; ?>
 
                                                     </td>
@@ -200,7 +199,7 @@
 
                                                                 <ul>
                                                                     <li><strong>Data aplicação:</strong>
-                                                                        <?php echo $row_vacinas['vac_data_vacinacao']; ?>
+                                                                        <?php echo  date('d/m/Y', strtotime($row_vacinas['vac_data_vacinacao'])); ?>
                                                                     </li>
                                                                     <li>
                                                                     <li><strong>Vacinado:</strong>
