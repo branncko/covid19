@@ -2,7 +2,7 @@
 
 include '../conecta.php';
 include_once '../busca/variaveis.php';
-	$result_boletim 	= "SELECT * FROM boletim ORDER BY dia DESC LIMIT 5";
+	$result_boletim 	= "SELECT * FROM boletim ORDER BY dia DESC LIMIT 3";
     $resultado_boletim  = $mysqli_connection->query($result_boletim) or die($mysqli_connection->error);
     
  
