@@ -1,5 +1,5 @@
 <?php
-    include '../conecta.php'; 
+    include 'inc-vacinometro/conexao_vac.php'; 
     include_once '../busca/variaveis.php';
 
 	//Selecionar os decretos a serem apresentado na página
@@ -10,12 +10,11 @@
 <html lang="pt-br">
 
 <head>
-    
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  
-
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Prefeitura de Cruz/CE - COVID-19</title>
+
     <!-- plugins:css -->
     <link rel="stylesheet" href="../assets/vendors/iconfonts/mdi/css/materialdesignicons.min.css">
     <link rel="stylesheet" href="../assets/vendors/iconfonts/ionicons/css/ionicons.css">
