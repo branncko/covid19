@@ -60,72 +60,99 @@
                                 <div class="card-body">
                                     <h4 class="card-title">INSIRA OS DADOS DA APLICAÇÃO DA VACINA</h4>
                                     <p class="card-description"> <code>Insira os dados nos campos abaixo...</code></p>
+
+
                                     <form class="forms-sample" method="POST" action="verifica-vacinacao.php">
-                                        <div class="form-group">
-                                            <label for="InputNomeVacinado">Nome</label>
-                                            <input type="text" size="30" class="form-control" name="vac_vacinado" id="InputNomeVacinado"
-                                                placeholder="Nome da pessoa vacinada">
+                                        <div class="form-row">
+
+                                            <div class="form-group col-md-8">
+                                                <label for="InputNomeVacinado">Nome</label>
+                                                <input type="text" size="30" class="form-control" name="vac_vacinado"
+                                                    id="InputNomeVacinado" placeholder="Nome da pessoa vacinada">
+                                            </div>
+
+                                            <div class="form-group col-md-4">
+                                                <label for="InputDataNasc">Data de Nascimento</label>
+                                                <input type="date" class="form-control" id="InputDataNasc"
+                                                    name="vac_data_nascimento" placeholder="Data">
+                                            </div>
+
                                         </div>
 
-                                        <div class="form-group">
-                                            <label for="InputDataNasc">Data de Nascimento</label>
-                                            <input type="date" class="form-control" id="InputDataNasc"
-                                                name="vac_data_nascimento" placeholder="Data">
+                                        <div class="form-row">
+
+                                            <div class="form-group col-md-6">
+                                                <label for="InputNomeVacinado">Categoria</label>
+                                                <input type="text" size="30" class="form-control" name="vac_categoria"
+                                                    id="InputNomeVacinado" placeholder="Categoria">
+                                            </div>
+                                            <div class="form-group col-md-6">
+                                                <label for="InputNomeVacinado">Sub-Grupo</label>
+                                                <input type="text" size="30" class="form-control"
+                                                    name="vac_grupo_atendimento" id="InputNomeVacinado"
+                                                    placeholder="Sub-grupo">
+                                            </div>
+
+                                        </div>
+
+                                        <div class="form-row">
+
+                                            <div class="form-group col-md-4">
+                                                <label for="InputDataAplicacao">Data da Aplicação da Vacina</label>
+                                                <input type="date" class="form-control" id="InputDataAplicacao"
+                                                    name="vac_data_vacinacao" placeholder="Data">
+                                            </div>
+
+                                            <div class="form-group col-md-2">
+                                                <label for="InputFaseVacinacao">Fase</label>
+                                                <input type="text" size="30" class="form-control" name="vac_fase"
+                                                    id="InputFaseVacinacao" placeholder="Fase">
+                                            </div>
+
+                                            <div class="form-group col-md-2">
+                                                <label for="InputFaseVacinacao">Dose</label>
+                                                <input type="text" size="30" class="form-control" name="vac_dose"
+                                                    id="InputFaseVacinacao" placeholder="Dose">
+                                            </div>
+
+                                            <div class="form-group col-md-2">
+                                                <label for="InputFaseVacinacao">Vacina</label>
+                                                <input type="text" size="30" class="form-control" name="vac_vacina"
+                                                    id="InputFaseVacinacao" placeholder="Vacina">
+                                            </div>
+
+                                            <div class="form-group col-md-2">
+                                                <label for="InputFaseVacinacao">Lote</label>
+                                                <input type="text" size="30" class="form-control" name="vac_lote"
+                                                    id="InputFaseVacinacao" placeholder="Lote">
+                                            </div>
+
+                                        </div>
+
+                                        <div class="row">
+
+                                            <div class="form-group col-md-5">
+                                                <label for="InputFaseVacinacao">Nome do Vacinador</label>
+                                                <input type="text" size="30" class="form-control" name="vac_lote"
+                                                    id="InputFaseVacinacao" placeholder="Nome do Vacinador">
+                                            </div>
+
+                                            <div class="form-group col-md-5">
+                                                <label for="InputFaseVacinacao">Estabelecimento</label>
+                                                <input type="text" size="30" class="form-control" name="vac_lote"
+                                                    id="InputFaseVacinacao" placeholder="Estabelecimento">
+                                            </div>
+
+                                            <div class="form-group col-md-2">
+                                                <label for="InputFaseVacinacao">Equipe</label>
+                                                <input type="text" size="30" class="form-control" name="vac_lote"
+                                                    id="InputFaseVacinacao" placeholder="Equipe">
+                                            </div>
+
+
                                         </div>
 
 
-										<div class="form-group">
-                                            <label for="InputDataAplicacao">Data da Aplicação da Vacina</label>
-                                            <input type="date" class="form-control" id="InputDataAplicacao"
-                                                name="vac_data_vacinacao" placeholder="Data">
-                                        </div>
-
-                                        <div class="form-group">
-                                            <label for="InputSuspeitos">Casos Suspeitos</label>
-                                            <input type="text" class="form-control" id="InputSuspeitos" name="suspeitos"
-                                                placeholder="Casos Suspeitos">
-                                        </div>
-                                        <div class="form-group">
-                                            <select class="form-control" name="classe_suspeitos"
-                                                id="InputClasseSuspeitos">
-                                                <option selected value="selecione">Selecione a evolução...</option>
-                                                <option value="text-danger mdi mdi-arrow-up">SOBE</option>
-                                                <option value="text-success mdi mdi-arrow-down">DESCE</option>
-                                                <option value="text-success mdi mdi-ray-vertex">ESTÁVEL</option>
-                                            </select>
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="InputConfirmados">Casos Confirmados</label>
-                                            <input type="text" class="form-control" id="InputConfirmados"
-                                                name="confirmados" placeholder="Casos Confirmados">
-                                        </div>
-                                        <div class="form-group">
-                                            <select class="form-control" name="classe_confirmados"
-                                                id="InputClasseConfirmados">
-                                                <option selected value="selecione">Selecione a evolução...</option>
-                                                <option value="text-danger mdi mdi-arrow-up">SOBE</option>
-                                                <option value="text-success mdi mdi-arrow-down">DESCE</option>
-                                                <option value="text-success mdi mdi-ray-vertex">ESTÁVEL</option>
-                                            </select>
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="InputDescartados">Casos Descartados</label>
-                                            <input type="text" class="form-control" id="InputDescartados"
-                                                name="descartados" placeholder="Casos Descartados">
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="InputObitos">Casos com Óbitos</label>
-                                            <input type="text" class="form-control" id="InputObitos" name="obitos"
-                                                placeholder="Casos com Óbitos">
-                                        </div>
-                                        <div class="form-group">
-                                            <select class="form-control" name="classe_obitos" id="InputClasseObitos">
-                                                <option selected value="selecione">Selecione a evolução...</option>
-                                                <option value="text-danger mdi mdi-arrow-up">SOBE</option>
-                                                <option value="text-success mdi mdi-arrow-down">DESCE</option>
-                                                <option value="text-success mdi mdi-ray-vertex">ESTÁVEL</option>
-                                            </select>
-                                        </div>
                                         <button type="submit" class="btn btn-success mr-2" name="enviar">Enviar</button>
                                     </form>
                                 </div>
