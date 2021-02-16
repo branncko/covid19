@@ -150,12 +150,12 @@
                                                     <th>Detalhes</th>
                                                 </tr>
                                             </thead>
-                                            <tbody>
+                                            <tbody><?php header ('Content-type: text/html; charset=UTF-8'); ?>
                                                 <?php while($row_vacinas = mysqli_fetch_assoc($resultado_vacinas)){ ?>
                                                 <tr>
 
-                                                    <td style="font-size:12px;" class="h8 p-1">
-                                                        <?= date('d/m/Y', strtotime($row_vacinas['vac_data_vacinacao'])); ?></strong><br>
+                                                    <td style="font-size:12px;" class="h8 p-1"><strong>
+                                                            <?= date('d/m/Y', strtotime($row_vacinas['vac_data_vacinacao'])); ?></strong><br>
                                                         FASE <?php echo $row_vacinas['vac_fase']; ?>
 
                                                     </td>
