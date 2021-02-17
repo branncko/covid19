@@ -187,7 +187,7 @@
                                                     <div class="modal-dialog modal-dialog-centered" role="document">
                                                         <div class="modal-content">
                                                             <div class="modal-header">
-                                                                <h4 class="h6">Informações Principais
+                                                                <h4 class="h6">Informações Principais | <?php echo $row_vacinas['id']; ?>
                                                                 </h4>
 
                                                                 <button type="button" class="close" data-dismiss="modal"
