@@ -1,5 +1,5 @@
 <?php
-    include 'inc-vacinometro/conexao_vac.php'; 
+    include '../conecta.php'; 
     include_once '../busca/variaveis.php';
 
 	//Selecionar os decretos a serem apresentado na página
@@ -150,7 +150,7 @@
                                                     <th>Detalhes</th>
                                                 </tr>
                                             </thead>
-                                            <tbody><?php header ('Content-type: text/html; charset=UTF-8'); ?>
+                                            <tbody>
                                                 <?php while($row_vacinas = mysqli_fetch_assoc($resultado_vacinas)){ ?>
                                                 <tr>
 
