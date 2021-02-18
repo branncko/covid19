@@ -2,7 +2,7 @@
 
 include '../conecta.php';
 include_once '../busca/variaveis.php';
-	$result_boletim 	= "SELECT * FROM boletim ORDER BY dia DESC LIMIT 3";
+	$result_boletim 	= "SELECT * FROM boletim ORDER BY dia DESC LIMIT 2";
     $resultado_boletim  = $mysqli_connection->query($result_boletim) or die($mysqli_connection->error);
     
  
@@ -23,29 +23,26 @@ $campo_ontem = 100;
 echo "suspeito agora: " . $susp_total . "<br>";
 echo "suspeito anterior:  " . $sus_salvo . "<hr>";
 
-if($susp_total == $sus) {
-    echo "suspeito agora: " . $susp_total . "<br>";
-    echo "suspeito anterior:  " . $sus_salvo . "<br>";
-    echo "não mudou";
+if($susp_total == $sus_salvo) {
+    
+    $classe_suspeitos = "mudou nadinha";
+
+}   
+
+elseif($susp_total > $sus_salvo) {
+    $classe_suspeitos = "diminuindo";
+}     
+
+
+elseif($susp_total < $sus_salvo) {
+
+    $classe_suspeitos = "aumentando";
    
 
 }   
 
-if ($susp_total > $sus) {
-    echo "suspeito agora: " . $susp_total . "<br>";
-    echo "suspeito anterior:  " . $sus_salvo . "<br>";
-    echo "aumentou";
-    
-}     
 
-
-if($susp_total < $sus) {
-    echo "suspeito agora: " . $susp_total . "<br>";
-    echo "suspeito anterior:  " . $sus_salvo . "<br>";
-    echo "diminuiu";
-
-}   
-
+echo $classe_suspeitos;
 
 
 
@@ -70,7 +67,7 @@ echo "<hr>" . $campo01 . "<hr>";
         <?php while($row_boletim = $resultado_boletim->fetch_array()) { ?>
         <tr>
             <td><?php echo date('d/m/Y', strtotime($row_boletim['dia'])); ?>
-                <hr>
+                <br>
                 <?php echo date('H:i:s', strtotime($row_boletim['hora'])); ?>
             </td>
             <td class="">
