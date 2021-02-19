@@ -30,7 +30,7 @@ if($susp_total == $sus_salvo) {
 }   
 
 elseif($susp_total > $sus_salvo) {
-    $classe_suspeitos = "aumentando";
+    $classe_suspeitos = "text-success mdi mdi-arrow-down";
 }     
 
 
@@ -48,6 +48,10 @@ echo $susp_total . '<br>';
 echo $sus_salvo . '<br>' ;
 
 echo $classe_suspeitos . '<br>' ;
+
+
+echo "<strong>" . $susp_total . '<i class="' . $classe_suspeitos . '"></i></strong>';
+                
 
 echo "<hr>";
 
