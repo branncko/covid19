@@ -30,19 +30,26 @@ if($susp_total == $sus_salvo) {
 }   
 
 elseif($susp_total > $sus_salvo) {
-    $classe_suspeitos = "diminuindo";
+    $classe_suspeitos = "aumentando";
 }     
 
 
 elseif($susp_total < $sus_salvo) {
 
-    $classe_suspeitos = "aumentando";
+    $classe_suspeitos = "diminuindo";
    
 
 }   
 
 
-echo $classe_suspeitos;
+echo "<hr>";
+
+echo $susp_total . '<br>';
+echo $sus_salvo . '<br>' ;
+
+echo $classe_suspeitos . '<br>' ;
+
+echo "<hr>";
 
 
 
