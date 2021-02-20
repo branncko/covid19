@@ -23,8 +23,9 @@
                    $susp_internados = $resultado->s_qty_interned;
                    $susp_total = $susp_isolados + $susp_internados;
                    $reinfectados = $resultado->qty_reinfected;
+                   $reajusta_inf = $reinfectados / 2;
                    $descartados = $resultado->qty_discarded;
-                   $conf_total = $conf_isolados + $conf_recuperados + $reinfectados + $conf_obitos;
+                   $conf_total = $conf_isolados + $conf_recuperados + $reajusta_inf + $conf_obitos;
                    $notificacoes = $conf_total + $susp_total + $descartados ; 
                    $letalidade = $conf_obitos * 100 / $conf_total;
                    $letalidade = number_format($letalidade, 2, '.', '');
