@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="pt-bren">
+<html lang="pt-br">
 
 <head>
     <!-- Required meta tags -->
@@ -43,28 +43,32 @@
 
             <?php 
 
-include '../conecta.php';
-include_once '../busca/variaveis.php';
-	$result_boletim 	= "SELECT * FROM boletim ORDER BY dia DESC LIMIT 4";
-    $resultado_boletim  = $mysqli_connection->query($result_boletim) or die($mysqli_connection->error);
+            include '../conecta.php';
+            include_once '../busca/variaveis.php';
+                
+            $result_boletim 	= "SELECT * FROM boletim ORDER BY dia DESC LIMIT 4";
+            $resultado_boletim  = $mysqli_connection->query($result_boletim) or die($mysqli_connection->error);
     
  
 
 
-/* echo $letalidade . "<br>";
-echo $notificacoes . "<br>"; 
-echo $dia . "<br>"; 
-echo $atualiza[1] . "<br>";
-echo $municipio . "<br>";
- */
+// echo $letalidade . "<br>";
+// echo $notificacoes . "<br>"; 
+// echo $dia . "<br>"; 
+// echo $atualiza[1] . "<br>";
+// echo $municipio . "<br>";
+
 $row_boletim = $resultado_boletim->fetch_array();
 $sus_salvo = $row_boletim['suspeitos'];
+$conf_salvo = $row_boletim['confirmados'];
+$descartado_salvo = $row_boletim['descartados'];
+$obito_salvo = $row_boletim['obitos'];
 
-$campo_hoje = 100;
-$campo_ontem = 100;
 
 /* echo "suspeito agora: " . $susp_total . "<br>";
 echo "suspeito anterior:  " . $sus_salvo . "<hr>"; */
+
+//Compara os casos suspeitos
 
 if($susp_total == $sus_salvo) {
     
@@ -83,6 +87,56 @@ elseif($susp_total < $sus_salvo) {
    
 
 }   
+
+// Compara os casos  confirmados
+
+if($conf_total == $conf_salvo) {
+    
+    $classe_confirmados = "text-success mdi mdi-ray-vertex";
+
+}   
+
+elseif($conf_total > $conf_salvo) {
+    $classe_confirmados = "text-danger mdi mdi-arrow-up";
+}     
+
+
+elseif($conf_total < $conf_salvo) {
+
+    $classe_confirmados = "text-success mdi mdi-arrow-down";
+   
+}
+
+
+// Compara os casos descartados
+
+if($descartados == $descartado_salvo) {
+    
+    $classe_descartados = "text-success mdi mdi-ray-vertex";
+
+}   
+
+elseif($descartados > $descartado_salvo) {
+    $classe_descartados = "text-danger mdi mdi-arrow-up";
+}     
+
+
+
+
+// Compara os casos óbitos
+
+if($conf_obitos == $obito_salvo) {
+    
+    $classe_obitos = "text-success mdi mdi-ray-vertex";
+
+}   
+
+elseif($conf_obitos > $obito_salvo) {
+    $classe_obitos = "text-danger mdi mdi-arrow-up";
+}     
+
+
+
 
 ?>
 
@@ -108,9 +162,126 @@ echo "<hr>"; */
 
 
 $campo01 = date('d/m/Y', strtotime($row_boletim['dia']));
+$campo02 = date('H:i:s', strtotime($row_boletim['hora'])); ?>
 
-/* echo "<hr>" . $campo01 . "<hr>"; */
+            <div class="card bg-secondary p-2 mb-3">
+                <p class="h4">
+                    A última atualização do banco de dados foi em <?=$campo01 ;?> às <?=$campo02 ;?> <br>
+                    Em investigação: <?= $sus_salvo;?> <br>
+                    Confirmados: <?= $conf_salvo;?> <br>
+                    Descartados: <?= $descartado_salvo;?> <br>
+                    Óbitos: <?= $obito_salvo;?> <br>
+
+                </p>
+
+
+            </div>
+
+
+            <div class="card p-2">
+                <p class="h4">
+
+                    A última atualização do Painel foi em <?=$dia ;?> às <?=$atualiza[1] ;?> <br>
+                    Em investigação: <?= $susp_total;?> <i class="<?php echo $classe_suspeitos; ?>"></i> <br>
+                    Confirmados: <?= $conf_total;?> <i class="<?php echo $classe_confirmados; ?>"></i> <br>
+                    Descartados: <?= $descartados;?> <i class="<?php echo $classe_descartados; ?>"></i> <br>
+                    Óbitos: <?= $conf_obitos;?> <i class="<?php echo $classe_obitos; ?>"></i> <br>
+                </p>
+
+
+                <?php 
+setlocale( LC_ALL, 'pt_BR', 'pt_BR.iso-8859-1', 'pt_BR.utf-8', 'portuguese' ); 
+date_default_timezone_set( 'America/Sao_Paulo' );
+//echo strftime( '%Y-%m-%d %H:%M:%S', strtotime('today') );
+$hojeagora = strftime('%Y-%m-%d', strtotime('today') );
+$datadiahoje = date('Y-m-d');
+$datahorario = date('H:i');
+echo $datadiahoje . "<br>"; 
+echo $datahorario;
+var_dump($hojeagora);
+
 ?>
+
+
+
+
+
+            </div>
+
+            <div class="form-group">
+
+
+
+                <button type="button" class="btn btn-primary" data-toggle="modal"
+                    data-target="#detalhes-<?php echo $row_vacinas['id']; ?>">Enviar</button>
+
+
+                <div class="modal fade" id="detalhes-<?php echo $row_vacinas['id']; ?>" tabindex="-1" role="dialog"
+                    aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h4 class="h6">Informações Principais | <?php echo $row_vacinas['id']; ?>
+                                </h4>
+
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <p class="card-description margin-bottom-zero">
+
+                                <h3>
+                                    <?php 
+            $sql = "INSERT INTO boletim (dia, hora, suspeitos, classe_suspeitos, confirmados, classe_confirmados, descartados, obitos, classe_obitos) VALUES ('$datadiahoje' , '$datahorario', '$susp_total', '$classe_suspeitos', '$conf_total', '$classe_confirmados', '$descartados', '$conf_obitos', '$classe_obitos')";
+
+            if ($mysqli_connection->query($sql) === TRUE) {
+                echo  "Boletim incluído com sucesso!";
+            } else {
+                echo "Erro: " . $sql . "<br>" . $mysqli_connection->error;
+            }
+            
+            $mysqli_connection->close();
+            
+            
+            
+            
+            ?>
+                                </h3>
+
+                                </p>
+
+
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">
+                                    Fechar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+
+
+
+            </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
             <hr class="text-light mt-3">
 
