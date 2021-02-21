@@ -41,7 +41,7 @@
                             include '../conecta.php';
                             include_once '../busca/variaveis.php';
                                 
-                            $result_boletim 	= "SELECT * FROM boletim ORDER BY dia DESC LIMIT 4";
+                            $result_boletim 	= "SELECT * FROM boletim ORDER BY dia DESC LIMIT 10";
                             $resultado_boletim  = $mysqli_connection->query($result_boletim) or die($mysqli_connection->error);
                                   
 
@@ -181,7 +181,7 @@
                 <div class="modal-dialog modal-dialog-centered" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h4 class="h6">Situação Atual 
+                            <h4 class="h6">Situação Atual
                             </h4>
 
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -189,7 +189,24 @@
                             </button>
                         </div>
                         <div class="modal-body">
+
+
                             <p class="card-description margin-bottom-zero">
+
+                                <?php if($campo01 == $dia) {
+                                
+                                echo '<h3 class="text-success">Sistema está atualizado</h3>' ;
+                            }
+                                else {
+
+                                    echo '<h3 class="text-danger">Sistema está sendo atualizado...</h3>' ;
+                                    include 'includes/salva_atualizador.php';
+
+
+                                }
+                                
+                                
+                            ?>
 
 
 
