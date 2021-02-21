@@ -23,7 +23,7 @@
                    $susp_internados = $resultado->s_qty_interned;
                    $susp_total = $susp_isolados + $susp_internados;
                    $reinfectados = $resultado->qty_reinfected;
-                   $reajusta_inf = $reinfectados / 2;
+                   $reajusta_inf = $reinfectados;
                    $descartados = $resultado->qty_discarded;
                    $conf_total = $conf_isolados + $conf_recuperados + $reajusta_inf + $conf_obitos;
                    $notificacoes = $conf_total + $susp_total + $descartados ; 
