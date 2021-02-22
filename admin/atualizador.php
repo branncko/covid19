@@ -123,8 +123,10 @@
 
 
 
-    <?php $campo01 = date('d/m/Y', strtotime($row_boletim['dia']));
-                            $campo02 = date('H:i:s', strtotime($row_boletim['hora'])); ?>
+        <?php 
+            $campo01 = date('d/m/Y', strtotime($row_boletim['dia']));
+            $campo02 = date('H:i:s', strtotime($row_boletim['hora'])); 
+        ?>
 
     <div class="container">
         <h1>Atualizador BOLETIM COVID</h1>
