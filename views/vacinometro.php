@@ -95,7 +95,7 @@
                                         <div class="col-lg-4 col-md-6">
                                             <div class="d-flex">
                                                 <div class="wrapper">
-                                                    <h2 class="font-weight-semibold mb-0">342</h2>
+                                                    <h2 class="font-weight-semibold mb-0">344</h2>
                                                     <div class="d-flex align-items-center pb-2">
                                                         <div class="dot-indicator bg-success mr-2"></div>
                                                         <p class="mb-0">Vacinas Recebidas</p>
@@ -106,7 +106,7 @@
                                         <div class="col-lg-4 col-md-6 mt-md-0 mt-4">
                                             <div class="d-flex">
                                                 <div class="wrapper">
-                                                    <h2 class="font-weight-semibold mb-0">342</h2>
+                                                    <h2 class="font-weight-semibold mb-0">344</h2>
                                                     <div class="d-flex align-items-center pb-2">
                                                         <div class="dot-indicator bg-primary mr-2"></div>
                                                         <p class="mb-0">Doses Aplicadas</p>
