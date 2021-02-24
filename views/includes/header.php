@@ -1,10 +1,10 @@
 <?php
-    include '../conecta.php'; 
-    include_once '../busca/variaveis.php';
+    //include '../conecta.php'; 
+    //include_once '../busca/variaveis.php';
 
 	//Selecionar os decretos a serem apresentado na página
-	$result_vacinas = "SELECT * FROM vacinometro ORDER BY vac_data_vacinacao DESC";
-	$resultado_vacinas = mysqli_query($mysqli_connection, $result_vacinas);
+	//$result_vacinas = "SELECT * FROM vacinometro ORDER BY vac_data_vacinacao DESC";
+	//$resultado_vacinas = mysqli_query($mysqli_connection, $result_vacinas);
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -13,7 +13,7 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Prefeitura de Cruz/CE - COVID-19</title>
+    <title>Cruz/CE - COVID-19</title>
 
     <!-- plugins:css -->
     <link rel="stylesheet" href="../assets/vendors/iconfonts/mdi/css/materialdesignicons.min.css">

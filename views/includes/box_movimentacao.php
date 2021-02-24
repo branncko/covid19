@@ -1,26 +1,14 @@
 <?php
 
-$servidor = "localhost";
-$usuario = "root";
-$senha = "lamp";
-$banco = "boletim";
+include '/data/www/default/covid19/conecta.php'; 
+include_once '../busca/variaveis.php';
 
-
-
-//Conexão
-
-$conn = mysqli_connect ($servidor, $usuario, $senha, $banco);
-if (!$conn) { die ("Falha de conexão --  " . mysqli_connect_error());
-}else {
-    echo "";
-}
-
-$seleciona_movimentacao = "SELECT * FROM movimentacao ORDER BY data_entrada DESC";
+$seleciona_movimentacao = "SELECT * FROM movimentacao ORDER BY data_de_entrada DESC";
 $result_movimento = mysqli_query ($conn, $seleciona_movimentacao);
 
-//$campos_moviment = mysqli_fetch_assoc($result_movimento);
+$campos_moviment = mysqli_fetch_assoc($result_movimento);
 
-//var_dump($campos_moviment);
+var_dump($campos_moviment);
 
 $dia_atualizacao =    date('d/m/Y', strtotime ($campos_moviment["mov_data_insercao"]));
 $hora_atualizacao =    date('H:i:s', strtotime ($campos_moviment["mov_data_insercao"]));
@@ -29,11 +17,12 @@ $hora_atualizacao =    date('H:i:s', strtotime ($campos_moviment["mov_data_inser
 
 ?>
 
+
 <div class="col-md-12 grid-margin stretch-card">
     <div class="card">
         <div class="card-body">
             <h4 class="card-title">MOVIMENTAÇÃO DE VACINAS CONTRA COVID-19</h4>
-            <p class="card-description"> <code> Última Atualização: <strong><?php echo $dia_atualizacao ; ?></strong> às
+            <p class="card-description"> <code> Última Atualização: <strong><?php echo $dia_atualizacao; ?></strong> às
                             <strong><?php echo $hora_atualizacao; ?></strong>
         - Dados da Secretaria Municipal de Saúde (SESA).</code></p>
             <div class="row">
@@ -58,7 +47,7 @@ $hora_atualizacao =    date('H:i:s', strtotime ($campos_moviment["mov_data_inser
         <div class="card">
             <div class="card-body">
                 <h4 class="card-title">Nova Movimentação</h4>
-                <form class="form-sample" method="POST" action="../views/includes/verifica-movimentacao.php">
+                <form class="form-sample" method="POST" action="includes/verifica-movimentacao.php">
                     <p class="card-description"> Preencha os dados abaixo </p>
 
                     <div class="row">
@@ -127,23 +116,23 @@ $hora_atualizacao =    date('H:i:s', strtotime ($campos_moviment["mov_data_inser
             <tbody>
 
             
-                <?php while($campos_movimento = mysqli_fetch_assoc($result_movimento)) { ?>
+                <?php while($campo_teste = mysqli_fetch_assoc($result_movimento)) { ?>
                 <tr>
                    
                     <td>
-                        <strong><?php echo $campos_movimento['id_movimentacao']; ?></strong>
+                        <strong><?php echo $campo_teste['id_movimentacao']; ?></strong>
                     </td>
                     <td>
-                        <strong><?php echo date('d/m/Y', strtotime( $campos_movimento['data_entrada'])); ?></strong>
+                        <strong><?php echo date('d/m/Y', strtotime( $campos_moviment['data_entrada'])); ?></strong>
                     </td>
                     <td>
-                        <strong><?php echo $campos_movimento['mov_descricao']; ?></strong>
+                        <strong><?php echo $campo_teste['mov_descricao']; ?></strong>
                     </td>
                     <td>
-                        <strong><?php echo $campos_movimento['mov_nome_vacina']; ?></strong>
+                        <strong><?php echo $campo_teste['mov_nome_vacina']; ?></strong>
                     </td>
                     <td>
-                        <strong><?php echo $campos_movimento['mov_quantidade']; ?></strong>
+                        <strong><?php echo $campo_teste['mov_quantidade']; ?></strong>
                     </td>
 
 

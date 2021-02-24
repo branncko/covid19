@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="pt-br">
 	<head>
@@ -29,7 +28,7 @@
 		<div class="container-scroller">
 			<!-- partial:../../partials/_navbar.html -->
 			<nav class="navbar default-layout col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
-			<?php require_once "../includes/top-menu-painel.php" ?>	
+				<?php require_once "../includes/top-menu-painel.php" ?>
 			</nav>
 			<!-- partial -->
 			<div class="container-fluid page-body-wrapper">
@@ -40,57 +39,52 @@
 				<div class="main-panel">
 					<div class="content-wrapper">
 						<div class="row">
-							<div class="col-12">
-								<div class="page-header">
-									<h4 class="page-title">Cadastrar VACINAS</h4>
-									<div class="quick-link-wrapper w-100 d-md-flex flex-md-wrap">
-										<ul class="quick-links ml-auto list-ticked">
-											<li class="text-muted">Insere uma nova movimentação.</li>
-										</ul>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="row">
-							<div class="buttons">
-								<div class="col-md-12 grid-margin stretch-card">
-									<a style="margin-right: 10px" class="btn btn-info btn-fw" href="painel.php" role="button"><i class="mdi mdi-view-dashboard"></i> Painel</a>
-									<button class="btn btn-dark btn-fw" onClick="history.go(-1)" ><i class="mdi mdi-keyboard-return"></i>Voltar</button>
-								</div>
-							</div>
-						</div>
-						<div class="row">
 							<div class="col-md-12 grid-margin stretch-card">
 								<div class="card">
 									<div class="card-body">
-										<h4 class="card-title">INSIRA OS DADOS DA MOVIMENTAÇÃO</h4>
-										<p class="card-description"> <code>Insira os dados nos campos abaixo...</code></p>
-											<form class="forms-sample" method="POST" action="verifica_movimentacao_vacinas.php">
-												<div class="form-group">
-													<label for="InputDatadeEntrada">Data de entrada</label>
-													<input type="date" class="form-control" name="data_de_entrada" id="InputDatadeEntrada">
-												</div>
-												<div class="form-group">
-													<label for="InputDescricao">Descrição</label>
-													<input type="text" class="form-control" name="descricao" id="InputDescricao">
-												</div>
-												<div class="form-group">
-													<label for="InputVacina">Vacina</label>
-													<input type="text" class="form-control" name="vacina" id="InputVacina">
-												</div>	
+										<p class="card-description">
+										<code>
+										<?php 
+										$link_pdf 				= $_POST['link_pdf'];
+										$link_xps 				= $_POST['link_xps'];
+										$numero_recomendacao 	= $_POST['numero_recomendacao'];
+										$dia_recomendacao 		= $_POST['dia_recomendacao'];
+										$detalhes  				= $_POST['detalhes'];
+										$erro 					= 0;
 
-                                                <div class="form-group">
-													<label for="InputLote">Lote</label>
-													<input type="text" class="form-control" name="lote" id="InputLote">
-												</div>												
-												<div class="form-group">
-													<label for="InputQuantidade">Quantidade</label>
-													<input type="text" class="form-control" id="InputQuantidade" name="quantidade" placeholder="Insira a quantidade">
-												</div>
-																					
-												
-												<button type="submit" class="btn btn-success mr-2" name="enviar">Postar</button>
-											</form>
+										//Verifica link para o arquivo
+										if (empty($link_pdf)) {
+											echo "Favor digitar o link para o arquivo.<br>";
+											$erro = 1;
+										}
+
+										//Verifica numero
+										if (empty($numero_recomendacao)) {
+											echo "Favor digitar o número da Recomendação.<br>";
+											$erro = 1;
+										}
+										
+										//Verifica data de publicacao
+										if (empty($dia_recomendacao)) {
+											echo "Favor digitar a data da Recomendação.<br>";
+											$erro = 1;
+										}
+
+										//Verifica detalhes
+										if (empty($detalhes)) {
+											echo "Favor digitar os detalhes.<br>";
+											$erro = 1;
+										}
+
+										//Verifica se não houve erro - neste caso chama a include para inserir os dados
+										if ($erro == 0) {
+											echo "Todos os dados foram digitados corretamente.<br>";
+											include 'includes/insere-recomendacao.inc';
+										}
+										?>
+										</code>
+										</p>
+										<button class="btn btn-dark btn-fw" onClick="history.go(-1)" ><i class="mdi mdi-keyboard-return"></i>Voltar</button>
 									</div>
 								</div>
 							</div>

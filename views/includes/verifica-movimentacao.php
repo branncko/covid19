@@ -39,13 +39,15 @@
 											echo "Favor digitar a quantidade.<br>";
 											$erro = 1;
 										}
-
-										
+								
 
 										//Verifica se não houve erro - neste caso chama a include para inserir os dados
-										if ($erro == 0) {
+										if ($erro = 0) {
 											echo "Todos os dados foram digitados corretamente.<br>";
-											include 'includes/insere_movimento.inc';
+
+                                            var_dump($vacina);
+											include '/includes/insere_movimento.inc';
+
 										}
 										?>
 										</code>
