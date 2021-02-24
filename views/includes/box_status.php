@@ -1,9 +1,9 @@
 <?php
 
-$servidor = "cruz07.vpshost0258.mysql.dbaas.com.br";
-$usuario = "cruz07";
-$senha = "Cubldsv2017";
-$banco = "cruz07";
+$servidor = "localhost";
+$usuario = "root";
+$senha = "lamp";
+$banco = "boletim";
 
 
 
