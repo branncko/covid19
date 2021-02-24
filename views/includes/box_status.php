@@ -99,40 +99,62 @@ $taxa_aplicacao = number_format($taxa_aplicacao, 2, '.', '');
             <div class="row mt-4">
                 <div class="col-md-12">
 
-                    <h5>Quantidade 1ª (primeira) dose: 434 Quantidade 2ª (segunda) dose: 176 </h5>
+                    <h5>Quantidade 1ª (primeira) dose: 434 <br> Quantidade 2ª (segunda) dose: 164 </h5>
 
                     <ul class="nav nav-tabs tab-simple-styled" role="tablist">
                         <li class="nav-item">
-                            <a class="nav-link active" id="tab-3-1" data-toggle="tab" href="#home-3-1" role="tab"
-                                aria-controls="home-3-1" aria-selected="true">
-                                <i class="mdi mdi-weather-night"></i>Estatística por categoria</a>
+                            <a class="nav-link active" id="tab-3-1" data-toggle="tab" href="#categorias" role="tab"
+                                aria-controls="categorias" aria-selected="true">
+                                <i class="fa fa-group"> </i> Estatística por categoria</a>
                         </li>
+
                         <li class="nav-item">
-                            <a class="nav-link" id="tab-3-2" data-toggle="tab" href="#profile-3-2" role="tab"
-                                aria-controls="profile-3-2" aria-selected="false">
-                                <i class="mdi mdi-tag-multiple"></i>Cronograma da Vacinação</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" id="tab-3-3" data-toggle="tab" href="#contact-3-3" role="tab"
-                                aria-controls="contact-3-3" aria-selected="false">
-                                <i class="mdi mdi-border-outside"></i>Movimentação de Entrada</a>
+                            <a class="nav-link" id="tab-3-3" data-toggle="tab" href="#entradas" role="tab"
+                                aria-controls="entradas" aria-selected="false">
+                                <i class="fa fa-bar-chart-o"> </i> Movimentação de Entrada</a>
                         </li>
                     </ul>
                     <div class="tab-content tab-content-basic">
-                        <div class="tab-pane fade active show" id="home-3-1" role="tabpanel" aria-labelledby="tab-3-1">
+                        <div class="tab-pane fade active show" id="categorias" role="tabpanel"
+                            aria-labelledby="tab-3-1">
 
-                            <h2 class="text-success">EM DESENVOLVIMENTO</h2>
+
+                            <div class="card-body">
+
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th>Categoria</th>
+                                            <th>DOSE 01 - Recebidas/Aplicadas</th>
+                                            <th>DOSE 02 - Recebidas/Aplicadas</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>Profissionais de Saúde</td>
+                                            <td>274/274</td>
+                                            <td>182/164</td>
+                                           
+                                        </tr>
+                                        <tr>
+                                            <td>Faixa Etária</td>
+                                            <td>160/160</td>
+                                            <td>Aguardando</td>
+                                            
+                                        </tr>
+                                        
+                                    </tbody>
+                                </table>
+                            </div>
+
 
                         </div>
-                        <div class="tab-pane fade" id="profile-3-2" role="tabpanel" aria-labelledby="tab-3-2">
+                        <div class="tab-pane fade" id="entradas" role="tabpanel" aria-labelledby="tab-3-2">
 
                             <h2 class="text-warning">EM DESENVOLVIMENTO</h2>
 
                         </div>
-                        <div class="tab-pane fade" id="contact-3-3" role="tabpanel" aria-labelledby="tab-3-3">
 
-                            <h2 class="text-danger">EM DESENVOLVIMENTO</h2>
-                        </div>
                     </div>
                 </div>
 
