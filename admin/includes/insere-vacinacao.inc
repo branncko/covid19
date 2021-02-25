@@ -1,20 +1,19 @@
 <?php 
 
-$vac_data_nascimento 	= $_POST['vac_data_nascimento'];
-$vac_vacinado 			= $_POST['vac_vacinado'];
-$vac_data_vacinacao  	= $_POST['vac_data_vacinacao'];
+		$vac_vacinado = $_POST['vac_vacinado'];
+		$vac_data_nascimento 	= $_POST['vac_data_nascimento'];
+		$vac_categoria  	= $_POST['vac_categoria'];
+		$vac_grupo_atendimento  	= $_POST['vac_grupo_atendimento'];
+		$vac_data_vacinacao  	= $_POST['vac_data_vacinacao'];
+		$vac_fase  	= $_POST['vac_fase'];
+		$vac_dose  	= $_POST['vac_dose'];
+		$vac_vacina  	= $_POST['vac_vacina'];
+		$vac_lote  	= $_POST['vac_lote'];
+		$vac_vacinador  	= $_POST['vac_vacinador'];
+		$vac_estabelecimento  	= $_POST['vac_estabelecimento'];
+		$vac_equipe   	= $_POST['vac_equipe '];
 
-$dia 			 		= $_POST['dia'];
-$hora 			 		= $_POST['hora'];
-$suspeitos  			= $_POST['suspeitos'];
-$classe_suspeitos 		= $_POST['classe_suspeitos'];
-$confirmados  	 		= $_POST['confirmados'];
-$classe_confirmados 	= $_POST['classe_confirmados'];
-$descartados  	 		= $_POST['descartados'];
-$obitos  	 	 		= $_POST['obitos'];
-$classe_obitos  	 	= $_POST['classe_obitos'];
-
-$sql = "INSERT INTO vacinometro (dia, hora, suspeitos, classe_suspeitos, confirmados, classe_confirmados, descartados, obitos, classe_obitos) VALUES ('$dia', '$hora', '$suspeitos', '$classe_suspeitos', '$confirmados', '$classe_confirmados', '$descartados', '$obitos', '$classe_obitos')";
+$sql = "INSERT INTO vacinometro (vac_vacinado, vac_data_nascimento, vac_categoria, vac_grupo_atendimento, vac_data_vacinacao, vac_fase, vac_dose, vac_vacina, vac_lote, vac_vacinador, vac_estabelecimento, vac_equipe) VALUES ('$vac_vacinado', '$vac_data_nascimento','$vac_categoria', '$vac_grupo_atendimento', '$vac_data_vacinacao', '$vac_fase', '$vac_dose', '$vac_vacina', '$vac_lote', '$vac_vacinador','$vac_estabelecimento','$vac_equipe')";
 
 if ($mysqli_connection->query($sql) === TRUE) {
 	echo  "Vacinação incluída com sucesso!";
