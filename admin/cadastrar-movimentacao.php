@@ -94,12 +94,13 @@
                                         </div>
                                         <div class="form-group">
                                             <label for="InputQuantidade">Quantidade</label>
-                                            <input type="text" class="form-control" id="InputQuantidade"
+                                            <input type="number" class="form-control" id="InputQuantidade"
                                                 name="quantidade" placeholder="Insira a quantidade">
                                         </div>
 
 
-                                        <button type="submit" class="btn btn-success mr-2" name="enviar">Postar</button>
+                                        <button type="submit" class="btn btn-success mr-2" name="enviar">Salvar</button>
+                                        <button type="reset" class="btn btn-danger mr-2" name="limpar">Limpar</button>
                                     </form>
                                 </div>
                             </div>

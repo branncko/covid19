@@ -8,14 +8,31 @@
     $result_movimentacao = "SELECT * FROM movimentacao ORDER BY data_entrada DESC";
 	$resultado_movimentacao = mysqli_query($mysqli_connection, $result_movimentacao);
 
-    $result_movimentacao_datatime = "SELECT * FROM movimentacao ORDER BY data_entrada ASC";
+    $result_movimentacao_datatime = "SELECT * FROM movimentacao ORDER BY mov_data_insercao DESC";
     $data_time = mysqli_query($mysqli_connection, $result_movimentacao_datatime);
 
     $field_movimentacao = mysqli_fetch_assoc($data_time);
-    
-    
 
+    $soma = "SELECT SUM(mov_quantidade) AS total FROM movimentacao";
+    $result_soma = mysqli_query($mysqli_connection, $soma);
+    $recebidas_total = mysqli_fetch_assoc($result_soma);
+    $aplicadas_total = 12165;
     
+    $taxa_aplicadas = ($aplicadas_total * 100  / $recebidas_total["total"]);
+    
+    if($aplicadas_total == $recebidas_total["total"] ) {
+    
+    $taxa_aplicadas = "100";
+        
+    } else {
+    
+    $taxa_aplicadas = number_format($taxa_aplicadas, 2, '.', '');
+    
+    }
+     
+
+
+   
     
 ?>
 <!DOCTYPE html>
@@ -100,7 +117,7 @@
                             <div class="card">
                                 <div class="card-body">
                                     <h4 class="card-title">BEM VINDO AO VACINÔMETRO DA PREFEITURA DE CRUZ</h4>
-                                   
+
                                     <p class="card-description"> <code> Última Atualização: <strong> <?= date('d/m/Y', strtotime($field_movimentacao['mov_data_insercao'])); ?></strong> às
                             <strong> <?= date('H:i:s', strtotime($field_movimentacao['mov_data_insercao'])); ?></strong>
         - Dados da Secretaria Municipal de Saúde (SESA).</code></p>
@@ -109,10 +126,10 @@
                                             <div class="d-flex">
                                                 <div class="wrapper">
                                                     <h2 class="font-weight-semibold mb-0">
-                                                        <?=$campos_vacinas["vacinas_recebidas"];?> </h2>
+                                                        <?=$recebidas_total["total"];?> </h2>
                                                     <div class="d-flex align-items-center pb-2">
                                                         <div class="dot-indicator bg-success mr-2"></div>
-                                                        <p class="mb-0">Vacinas Recebidas</p>
+                                                        <p class="mb-0">Doses Recebidas</p>
                                                     </div>
                                                 </div>
                                             </div>
@@ -121,7 +138,7 @@
                                             <div class="d-flex">
                                                 <div class="wrapper">
                                                     <h2 class="font-weight-semibold mb-0">
-                                                        <?=$campos_vacinas["vacinas_aplicadas"];?> </h2>
+                                                        <?=$aplicadas_total;?> </h2>
                                                     <div class="d-flex align-items-center pb-2">
                                                         <div class="dot-indicator bg-primary mr-2"></div>
                                                         <p class="mb-0">Doses Aplicadas</p>
@@ -132,7 +149,8 @@
                                         <div class="col-lg-4 col-md-6 mt-md-0 mt-4">
                                             <div class="d-flex">
                                                 <div class="wrapper">
-                                                    <h2 class="font-weight-semibold mb-0"><?= $taxa_aplicacao;?>%</h2>
+                                                    <h2 class="font-weight-semibold mb-0">
+                                                        <?php echo $taxa_aplicadas; ?>%</h2>
                                                     <div class="d-flex align-items-center pb-2">
                                                         <div class="dot-indicator bg-info mr-2"></div>
                                                         <p class="mb-0">Doses Aplicadas</p>
@@ -147,10 +165,7 @@
                                 <div class="card-body">
                                     <h4 class="card-title">Detalhes</h4>
                                     <div class="row mt-4">
-                                        <div class="col-md-12">
-
-                                            <h5>Quantidade 1ª (primeira) dose: 434 <br> Quantidade 2ª (segunda) dose:
-                                                164 </h5>
+                                        <div class="col-md-12">                                            
 
                                             <ul class="nav nav-tabs tab-simple-styled" role="tablist">
                                                 <li class="nav-item">
@@ -167,42 +182,44 @@
                                                 </li>
                                             </ul>
                                             <div class="tab-content tab-content-basic">
+
                                                 <div class="tab-pane fade active show" id="categorias" role="tabpanel"
                                                     aria-labelledby="tab-3-1">
+                                                    <h3 class="m-3 text-success" style="text-align: center;">Doses por
+                                                        Categoria</h3>
 
+                                                    <table class="table table-hover">
+                                                        <thead>
+                                                            <tr>
+                                                                <th>Categoria</th>
+                                                                <th>DOSE 01 - Recebidas/Aplicadas</th>
+                                                                <th>DOSE 02 - Recebidas/Aplicadas</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr>
+                                                                <td>Profissionais de Saúde</td>
+                                                                <td>274/274</td>
+                                                                <td>182/164</td>
 
-                                                    <div class="card-body">
+                                                            </tr>
+                                                            <tr>
+                                                                <td>Faixa Etária</td>
+                                                                <td>160/160</td>
+                                                                <td>Aguardando</td>
 
-                                                        <table class="table">
-                                                            <thead>
-                                                                <tr>
-                                                                    <th>Categoria</th>
-                                                                    <th>DOSE 01 - Recebidas/Aplicadas</th>
-                                                                    <th>DOSE 02 - Recebidas/Aplicadas</th>
-                                                                </tr>
-                                                            </thead>
-                                                            <tbody>
-                                                                <tr>
-                                                                    <td>Profissionais de Saúde</td>
-                                                                    <td>274/274</td>
-                                                                    <td>182/164</td>
+                                                            </tr>
 
-                                                                </tr>
-                                                                <tr>
-                                                                    <td>Faixa Etária</td>
-                                                                    <td>160/160</td>
-                                                                    <td>Aguardando</td>
+                                                        </tbody>
+                                                    </table>
 
-                                                                </tr>
-
-                                                            </tbody>
-                                                        </table>
-                                                    </div>
 
 
                                                 </div>
                                                 <div class="tab-pane fade" id="entradas" role="tabpanel"
                                                     aria-labelledby="tab-3-2">
+                                                    <h3 class="m-3 text-success" style="text-align: center;">
+                                                        Movimentação de Entradas</h3>
 
                                                     <table class="table table-hover">
                                                         <thead>

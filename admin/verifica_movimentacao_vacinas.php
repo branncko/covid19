@@ -45,13 +45,13 @@
 										<p class="card-description">
 										<code>
 										<?php 
-										$data_de_entrada 				= $_POST['data_de_entrada'];
-										$descricao 				= $_POST['descricao'];
-										$vacina 	= $_POST['vacina'];
-										$mov_lote_vacina 	= $_POST['mov_lote_vacina'];
-										$quantidade 		= $_POST['quantidade'];
-										$detalhes  				= $_POST['detalhes'];
-										$erro 					= 0;
+										$data_de_entrada = $_POST['data_de_entrada'];
+										$descricao = $_POST['descricao'];
+										$vacina = $_POST['vacina'];
+										$mov_lote_vacina = $_POST['mov_lote_vacina'];
+										$quantidade = $_POST['quantidade'];
+										$detalhes = $_POST['detalhes'];
+										$erro = 0;
 
 										//Verifica a data
 										if (empty($data_de_entrada)) {
@@ -73,7 +73,7 @@
 
 										//Verifica a quantidade
 										if (empty($quantidade)) {
-											echo "Favor digitar a quantidade.<br>";
+											echo "Favor digitar a quantidade. [ CAMPO NÚMERICO ]<br> ";
 											$erro = 1;
 										}
 
