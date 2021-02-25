@@ -45,41 +45,42 @@
 										<p class="card-description">
 										<code>
 										<?php 
-										$link_pdf 				= $_POST['link_pdf'];
-										$link_xps 				= $_POST['link_xps'];
-										$numero_recomendacao 	= $_POST['numero_recomendacao'];
-										$dia_recomendacao 		= $_POST['dia_recomendacao'];
+										$data_de_entrada 				= $_POST['data_de_entrada'];
+										$descricao 				= $_POST['descricao'];
+										$vacina 	= $_POST['vacina'];
+										$mov_lote_vacina 	= $_POST['mov_lote_vacina'];
+										$quantidade 		= $_POST['quantidade'];
 										$detalhes  				= $_POST['detalhes'];
 										$erro 					= 0;
 
-										//Verifica link para o arquivo
-										if (empty($link_pdf)) {
-											echo "Favor digitar o link para o arquivo.<br>";
+										//Verifica a data
+										if (empty($data_de_entrada)) {
+											echo "Favor digitar a data.<br>";
 											$erro = 1;
 										}
 
-										//Verifica numero
-										if (empty($numero_recomendacao)) {
-											echo "Favor digitar o número da Recomendação.<br>";
+										//Verifica o lote
+										if (empty($descricao)) {
+											echo "Favor digitar a descrição do lote.<br>";
 											$erro = 1;
 										}
 										
-										//Verifica data de publicacao
-										if (empty($dia_recomendacao)) {
-											echo "Favor digitar a data da Recomendação.<br>";
+										//Verifica o nome da vacina
+										if (empty($vacina)) {
+											echo "Favor descrever a vacina.<br>";
 											$erro = 1;
 										}
 
-										//Verifica detalhes
-										if (empty($detalhes)) {
-											echo "Favor digitar os detalhes.<br>";
+										//Verifica a quantidade
+										if (empty($quantidade)) {
+											echo "Favor digitar a quantidade.<br>";
 											$erro = 1;
 										}
 
 										//Verifica se não houve erro - neste caso chama a include para inserir os dados
 										if ($erro == 0) {
 											echo "Todos os dados foram digitados corretamente.<br>";
-											include 'includes/insere-recomendacao.inc';
+											include 'includes/insere-mov_vacina.inc';
 										}
 										?>
 										</code>

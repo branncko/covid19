@@ -1,6 +1,6 @@
 <?php
 
-include '/data/www/default/covid19/conecta.php'; 
+include '../conecta.php'; 
 include_once '../busca/variaveis.php';
 
 $seleciona_movimentacao = "SELECT * FROM movimentacao ORDER BY data_de_entrada DESC";
