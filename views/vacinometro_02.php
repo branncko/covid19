@@ -16,7 +16,7 @@
     $soma = "SELECT SUM(mov_quantidade) AS total FROM movimentacao";
     $result_soma = mysqli_query($mysqli_connection, $soma);
     $recebidas_total = mysqli_fetch_assoc($result_soma);
-    $aplicadas_total = 12165;
+    $aplicadas_total = 607;
     
     $taxa_aplicadas = ($aplicadas_total * 100  / $recebidas_total["total"]);
     
@@ -163,17 +163,25 @@
                                 <!-- Abas de detalhes -->
 
                                 <div class="card-body">
-                                    <h4 class="card-title">Detalhes</h4>
+                                    <h4 class="m-3 text-muted">Detalhes</h4>
                                     <div class="row mt-4">
-                                        <div class="col-md-12">                                            
+                                        <div class="col-md-12">
 
                                             <ul class="nav nav-tabs tab-simple-styled" role="tablist">
                                                 <li class="nav-item">
                                                     <a class="nav-link active" id="tab-3-1" data-toggle="tab"
+                                                        href="#lista_vacinados" role="tab"
+                                                        aria-controls="lista_vacinados" aria-selected="true">
+                                                        <i class="fa fa-user"> </i> Pessoas Vacinadas</a>
+                                                </li>
+
+                                                <li class="nav-item">
+                                                    <a class="nav-link" id="tab-3-2" data-toggle="tab"
                                                         href="#categorias" role="tab" aria-controls="categorias"
-                                                        aria-selected="true">
+                                                        aria-selected="false">
                                                         <i class="fa fa-group"> </i> Estatística por categoria</a>
                                                 </li>
+
 
                                                 <li class="nav-item">
                                                     <a class="nav-link" id="tab-3-3" data-toggle="tab" href="#entradas"
@@ -183,10 +191,150 @@
                                             </ul>
                                             <div class="tab-content tab-content-basic">
 
-                                                <div class="tab-pane fade active show" id="categorias" role="tabpanel"
+
+                                                <div class="tab-pane fade active show" id="lista_vacinados" role="tabpanel"
                                                     aria-labelledby="tab-3-1">
-                                                    <h3 class="m-3 text-success" style="text-align: center;">Doses por
-                                                        Categoria</h3>
+                                                    <h4 class="m-3 text-muted" style="text-align: center;">
+                                                        Pessoas vacinadas</h4>
+
+                                                    <h4 class="card-title">TRANSPARÊNCIA DA VACINAÇÃO </h4>
+                                                    <p class="card-description">
+                                                        <code>Informações relativas às pessoas já vacinadas contra a COVID-19 (Grupo Prioritário).</code>
+                                                    </p>
+                                                    <div class="table-responsive">
+                                                        <table id="vacinas" class="table table-stretched">
+                                                            <thead>
+                                                                <tr>
+                                                                    <th>Data da Vacinação <br>Fase</th>
+                                                                    <th>Nome</th>
+                                                                    <th>Categoria <br>Subcategoria</th>
+                                                                    <th>Vacina/Dose <br>Vacinador </th>
+                                                                    <th>Detalhes</th>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                                <?php while($row_vacinas = mysqli_fetch_assoc($resultado_vacinas)){ ?>
+                                                                <tr>
+
+                                                                    <td style="font-size:12px;" class="h8 p-1"><strong>
+                                                                            <?= date('d/m/Y', strtotime($row_vacinas['vac_data_vacinacao'])); ?></strong><br>
+                                                                        FASE <?php echo $row_vacinas['vac_fase']; ?>
+
+                                                                    </td>
+                                                                    <td style="font-size:12px;" class="h8">
+                                                                        <strong><?php echo $row_vacinas['vac_vacinado']; ?></strong>
+                                                                    </td>
+                                                                    <td style="font-size:12px;" class="caracteres h8">
+                                                                        <strong><?php echo $row_vacinas['vac_categoria']; ?></strong>
+                                                                        <br>
+                                                                        <?php echo $row_vacinas['vac_grupo_atendimento']; ?>
+
+                                                                    </td>
+                                                                    <td style="font-size:12px;" class="caracteres h8">
+                                                                        <strong>
+                                                                            <?php echo $row_vacinas['vac_vacina']; ?> -
+                                                                            <?= $row_vacinas['vac_dose'];?> DOSE
+                                                                        </strong><br>
+                                                                        <?php echo $row_vacinas['vac_vacinador']; ?>
+
+
+                                                                    </td>
+                                                                    <td class="h8"><button type="button"
+                                                                            class="btn btn-primary" data-toggle="modal"
+                                                                            data-target="#detalhes-<?php echo $row_vacinas['id']; ?>">+</button>
+                                                                    </td>
+                                                                </tr>
+                                                                <!-- Modal detalhes -->
+                                                                <div class="modal fade"
+                                                                    id="detalhes-<?php echo $row_vacinas['id']; ?>"
+                                                                    tabindex="-1" role="dialog"
+                                                                    aria-labelledby="exampleModalCenterTitle"
+                                                                    aria-hidden="true">
+                                                                    <div class="modal-dialog modal-dialog-centered"
+                                                                        role="document">
+                                                                        <div class="modal-content">
+                                                                            <div class="modal-header">
+                                                                                <h4 class="h6">Informações Principais |
+                                                                                    <?php echo $row_vacinas['id']; ?>
+                                                                                </h4>
+
+                                                                                <button type="button" class="close"
+                                                                                    data-dismiss="modal"
+                                                                                    aria-label="Close">
+                                                                                    <span
+                                                                                        aria-hidden="true">&times;</span>
+                                                                                </button>
+                                                                            </div>
+                                                                            <div class="modal-body">
+                                                                                <p
+                                                                                    class="card-description margin-bottom-zero">
+
+                                                                                <ul>
+                                                                                    <li><strong>Data aplicação:</strong>
+                                                                                        <?php echo  date('d/m/Y', strtotime($row_vacinas['vac_data_vacinacao'])); ?>
+                                                                                    </li>
+                                                                                    <li>
+                                                                                    <li><strong>Vacinado:</strong>
+
+                                                                                        <?php echo $row_vacinas['vac_vacinado']; ?>
+                                                                                    </li>
+
+                                                                                    <li><strong>Unidade:</strong>
+                                                                                        <?php echo $row_vacinas['vac_estabelecimento']; ?>
+                                                                                    </li>
+                                                                                    <li><strong>Dose:</strong>
+                                                                                        <?php echo $row_vacinas['vac_dose']; ?>
+                                                                                    </li>
+                                                                                    <li><strong>Fase:</strong>
+                                                                                        <?php echo $row_vacinas['vac_fase']; ?>
+                                                                                    </li>
+                                                                                    <li><strong>Categoria:</strong>
+                                                                                        <?php echo $row_vacinas['vac_categoria']; ?>
+                                                                                    </li>
+                                                                                    <li> <strong>Sub Categoria:</strong>
+                                                                                        <?php echo $row_vacinas['vac_grupo_atendimento']; ?>
+                                                                                    </li>
+
+                                                                                    <li><strong>Vacina:</strong>
+                                                                                        <?php echo $row_vacinas['vac_vacina']; ?>
+                                                                                    </li>
+                                                                                    <li><strong>Lote:</strong>
+                                                                                        <?php echo $row_vacinas['vac_lote']; ?>
+                                                                                    </li>
+                                                                                    <li><strong>Vacinador:</strong>
+                                                                                        <?php echo $row_vacinas['vac_vacinador']; ?>
+                                                                                    </li>
+
+
+
+                                                                                </ul>
+
+                                                                                </p>
+
+
+                                                                            </div>
+                                                                            <div class="modal-footer">
+                                                                                <button type="button"
+                                                                                    class="btn btn-secondary"
+                                                                                    data-dismiss="modal">
+                                                                                    Fechar</button>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+
+                                                                <?php } ?>
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+
+                                                </div>
+
+
+                                                <div class="tab-pane fade" id="categorias" role="tabpanel"
+                                                    aria-labelledby="tab-3-2">
+                                                    <h4 class="m-3 text-muted" style="text-align: center;">Doses por
+                                                        Categoria</h4>
 
                                                     <table class="table table-hover">
                                                         <thead>
@@ -217,9 +365,9 @@
 
                                                 </div>
                                                 <div class="tab-pane fade" id="entradas" role="tabpanel"
-                                                    aria-labelledby="tab-3-2">
-                                                    <h3 class="m-3 text-success" style="text-align: center;">
-                                                        Movimentação de Entradas</h3>
+                                                    aria-labelledby="tab-3-3">
+                                                    <h4 class="m-3 text-muted" style="text-align: center;">
+                                                        Movimentação de Entradas</h4>
 
                                                     <table class="table table-hover">
                                                         <thead>
@@ -282,132 +430,7 @@
 
                     </div>
 
-                    <div class="row">
-                        <div class="col-md-12 grid-margin stretch-card">
-                            <div class="card">
-                                <div class="card-body">
-                                    <h4 class="card-title">TRANSPARÊNCIA DA VACINAÇÃO </h4>
-                                    <p class="card-description">
-                                        <code>Informações relativas às pessoas já vacinadas contra a COVID-19 (Grupo Prioritário).</code>
-                                    </p>
-                                    <div class="table-responsive">
-                                        <table id="vacinas" class="table table-stretched">
-                                            <thead>
-                                                <tr>
-                                                    <th>Data da Vacinação <br>Fase</th>
-                                                    <th>Nome</th>
-                                                    <th>Categoria <br>Subcategoria</th>
-                                                    <th>Vacina/Dose <br>Vacinador </th>
-                                                    <th>Detalhes</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <?php while($row_vacinas = mysqli_fetch_assoc($resultado_vacinas)){ ?>
-                                                <tr>
 
-                                                    <td style="font-size:12px;" class="h8 p-1"><strong>
-                                                            <?= date('d/m/Y', strtotime($row_vacinas['vac_data_vacinacao'])); ?></strong><br>
-                                                        FASE <?php echo $row_vacinas['vac_fase']; ?>
-
-                                                    </td>
-                                                    <td style="font-size:12px;" class="h8">
-                                                        <strong><?php echo $row_vacinas['vac_vacinado']; ?></strong>
-                                                    </td>
-                                                    <td style="font-size:12px;" class="caracteres h8">
-                                                        <strong><?php echo $row_vacinas['vac_categoria']; ?></strong>
-                                                        <br>
-                                                        <?php echo $row_vacinas['vac_grupo_atendimento']; ?>
-
-                                                    </td>
-                                                    <td style="font-size:12px;" class="caracteres h8">
-                                                        <strong> <?php echo $row_vacinas['vac_vacina']; ?> -
-                                                            <?= $row_vacinas['vac_dose'];?> DOSE </strong><br>
-                                                        <?php echo $row_vacinas['vac_vacinador']; ?>
-
-
-                                                    </td>
-                                                    <td class="h8"><button type="button" class="btn btn-primary"
-                                                            data-toggle="modal"
-                                                            data-target="#detalhes-<?php echo $row_vacinas['id']; ?>">+</button>
-                                                    </td>
-                                                </tr>
-                                                <!-- Modal detalhes -->
-                                                <div class="modal fade" id="detalhes-<?php echo $row_vacinas['id']; ?>"
-                                                    tabindex="-1" role="dialog"
-                                                    aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                                                    <div class="modal-dialog modal-dialog-centered" role="document">
-                                                        <div class="modal-content">
-                                                            <div class="modal-header">
-                                                                <h4 class="h6">Informações Principais |
-                                                                    <?php echo $row_vacinas['id']; ?>
-                                                                </h4>
-
-                                                                <button type="button" class="close" data-dismiss="modal"
-                                                                    aria-label="Close">
-                                                                    <span aria-hidden="true">&times;</span>
-                                                                </button>
-                                                            </div>
-                                                            <div class="modal-body">
-                                                                <p class="card-description margin-bottom-zero">
-
-                                                                <ul>
-                                                                    <li><strong>Data aplicação:</strong>
-                                                                        <?php echo  date('d/m/Y', strtotime($row_vacinas['vac_data_vacinacao'])); ?>
-                                                                    </li>
-                                                                    <li>
-                                                                    <li><strong>Vacinado:</strong>
-
-                                                                        <?php echo $row_vacinas['vac_vacinado']; ?>
-                                                                    </li>
-
-                                                                    <li><strong>Unidade:</strong>
-                                                                        <?php echo $row_vacinas['vac_estabelecimento']; ?>
-                                                                    </li>
-                                                                    <li><strong>Dose:</strong>
-                                                                        <?php echo $row_vacinas['vac_dose']; ?>
-                                                                    </li>
-                                                                    <li><strong>Fase:</strong>
-                                                                        <?php echo $row_vacinas['vac_fase']; ?>
-                                                                    </li>
-                                                                    <li><strong>Categoria:</strong>
-                                                                        <?php echo $row_vacinas['vac_categoria']; ?>
-                                                                    </li>
-                                                                    <li> <strong>Sub Categoria:</strong>
-                                                                        <?php echo $row_vacinas['vac_grupo_atendimento']; ?>
-                                                                    </li>
-
-                                                                    <li><strong>Vacina:</strong>
-                                                                        <?php echo $row_vacinas['vac_vacina']; ?></li>
-                                                                    <li><strong>Lote:</strong>
-                                                                        <?php echo $row_vacinas['vac_lote']; ?></li>
-                                                                    <li><strong>Vacinador:</strong>
-                                                                        <?php echo $row_vacinas['vac_vacinador']; ?>
-                                                                    </li>
-
-
-
-                                                                </ul>
-
-                                                                </p>
-
-
-                                                            </div>
-                                                            <div class="modal-footer">
-                                                                <button type="button" class="btn btn-secondary"
-                                                                    data-dismiss="modal"> Fechar</button>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <!-- Modal detalhes -->
-                                                <?php } ?>
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
                 </div>
                 <!-- partial:../../partials/_footer.html -->
                 <footer class="footer">
