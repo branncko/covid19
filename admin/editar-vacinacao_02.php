@@ -2,8 +2,8 @@
     include '../conecta.php'; 
     include_once '../busca/variaveis.php';
 
-	//Selecionar os decretos a serem apresentado na página
-	$result_vacinados = "SELECT * FROM vacinometro WHERE id = '908'";
+	$id = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT);
+	$result_vacinados = "SELECT * FROM vacinometro WHERE id = '$id'";
 	$resultado_vacinados = mysqli_query($mysqli_connection, $result_vacinados);
     $edita_resultados = mysqli_fetch_assoc($resultado_vacinados);
 ?>
@@ -63,6 +63,7 @@
                             <div class="card">
                                 <div class="card-body">
                                     <h4 class="card-title">EDITE OS DADOS DA APLICAÇÃO DA VACINA</h4>
+                                    <button class="btn btn-primary m-2"> <a class="text-white" href="../views/admin_vacinometro.php">Listar</a> </button>
                                     <p class="card-description"> <code>Edite os campos abaixo...</code></p>
 
 
@@ -70,7 +71,7 @@
                                         <div class="form-row">
 
                                         <input type="hidden"  name="id"
-                                                    id="InputIdVacinado" value="<?php echo $edita_resultados['vac_id']; ?>">
+                                                    id="InputIdVacinado" value="<?php echo $edita_resultados['id']; ?>">
 
                                             <div class="form-group col-md-8">
                                                 <label for="InputNomeVacinado">Nome</label>

@@ -122,7 +122,9 @@
 
 
                                                     </td>
-                                                    <td class="h8"><button type="button" class="btn btn-primary"
+                                                    <td class="h8"> <button> <?php echo "<a href='../admin/editar-vacinacao_02.php?id=" . $row_vacinas['id'] . "'>Editar</a>";?>
+                                                    </button>
+                                                    <button type="button" class="btn btn-primary"
                                                             data-toggle="modal"
                                                             data-target="#detalhes-<?php echo $row_vacinas['id']; ?>"><i class="fa fa-info-circle"></i></button>
                                                     </td>

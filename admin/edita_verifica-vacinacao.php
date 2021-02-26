@@ -128,6 +128,8 @@
                                     </p>
                                     <button class="btn btn-dark btn-fw" onClick="history.go(-1)"><i
                                             class="mdi mdi-keyboard-return"></i>Voltar</button>
+                                            <button class="btn btn-dark btn-fw"> <i
+                                            class="mdi mdi-keyboard-return"></i><a class="text-white" href="../views/admin_vacinometro.php">Listar</a></button>
                                 </div>
                             </div>
                         </div>

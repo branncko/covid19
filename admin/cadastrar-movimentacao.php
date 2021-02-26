@@ -82,8 +82,8 @@
                                         <div class="form-group">
                                             <label for="InputVacina">Vacina</label>
                                             <select class="form-control" name="vacina" id="InputVacina">
-                                                <option>Butantan/CoronaVac</option>
-                                                <option>Fiocruz/Oxford/AstraZeneca</option>
+                                                <option>Fundação Butantan</option>
+                                                <option>Fundação Oswaldo Cruz</option>
                                             </select>
 
                                         </div>
