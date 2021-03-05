@@ -6,8 +6,8 @@
         $datadiahoje = date('Y-m-d');
         $datahorario = date('H:i');
         echo $datadiahoje . "<br>"; 
-        echo $datahorario;
-        var_dump($hojeagora);
+        echo $datahorario . "<br>";
+       // var_dump($hojeagora);
 
         ?>
 
