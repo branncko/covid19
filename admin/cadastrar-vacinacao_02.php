@@ -75,12 +75,18 @@
 
                                         <div class="form-row">
 
-                                            <div class="form-group col-md-6">
+                                            <div class="form-group col-md-4">
+                                                <label for="InputDocumento">Identificação</label>
+                                                <input type="text" size="30" class="form-control" name="vac_documento"
+                                                    id="InputDocumento" placeholder="CPF ou CNS">
+                                            </div>
+
+                                            <div class="form-group col-md-4">
                                                 <label for="InputNomeVacinado">Categoria</label>
                                                 <input type="text" size="30" class="form-control" name="vac_categoria"
                                                     id="InputNomeVacinado" placeholder="Categoria">
                                             </div>
-                                            <div class="form-group col-md-6">
+                                            <div class="form-group col-md-4">
                                                 <label for="InputNomeVacinado">Sub-Grupo</label>
                                                 <input type="text" size="30" class="form-control"
                                                     name="vac_grupo_atendimento" id="InputNomeVacinado"
@@ -133,15 +139,16 @@
 
                                             <div class="form-group col-md-5">
                                                 <label for="InputEstabelecimento">Estabelecimento</label>
-                                                <input type="text" size="30" class="form-control" name="vac_estabelecimento"
-                                                    id="InputEstabelecimento" placeholder="Estabelecimento">
+                                                <input type="text" size="30" class="form-control"
+                                                    name="vac_estabelecimento" id="InputEstabelecimento"
+                                                    placeholder="Estabelecimento">
                                             </div>
 
                                             <div class="form-group col-md-2">
                                                 <label for="InputEquipe">Equipe</label>
                                                 <input type="text" size="30" class="form-control" name="vac_equipe"
                                                     id="InputEquipe" placeholder="Equipe">
-                                            </div> 
+                                            </div>
 
 
                                         </div>

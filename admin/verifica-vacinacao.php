@@ -50,6 +50,7 @@
 										$vac_vacinado 			= $_POST['vac_vacinado'];
 										$vac_data_nascimento 	= $_POST['vac_data_nascimento'];
 										$vac_categoria  	= $_POST['vac_categoria'];
+										$vac_documento  	= $_POST['vac_documento'];
 										$vac_grupo_atendimento  	= $_POST['vac_grupo_atendimento'];
 										$vac_data_vacinacao  	= $_POST['vac_data_vacinacao'];
 										$vac_fase  	= $_POST['vac_fase'];
@@ -75,7 +76,13 @@
 											$erro = 1;
 										}
 
-										//Verifica o nome
+										//Verifica o documento
+										if (empty($vac_documento)) {
+											echo "Favor digitar o documento.<br>";
+											$erro = 1;
+										}
+                                        
+                                        //Verifica o nome
 										if (empty($vac_categoria)) {
 											echo "Favor digitar a categoria.<br>";
 											$erro = 1;
