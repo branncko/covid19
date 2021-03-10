@@ -59,15 +59,15 @@
 	//Selecionar os dodos a serem apresentado na página
 	$result_vacinas = "SELECT * FROM vacinometro ORDER BY vac_data_vacinacao DESC";
 	$resultado_vacinas = mysqli_query($mysqli_connection, $result_vacinas);
-    $result_movimentacao = "SELECT * FROM movimentacao ORDER BY data_entrada DESC";
+    $result_movimentacao = "SELECT * FROM vac_lotes ORDER BY data_recebimento DESC";
 	$resultado_movimentacao = mysqli_query($mysqli_connection, $result_movimentacao);
 
-    $result_movimentacao_datatime = "SELECT * FROM movimentacao ORDER BY mov_data_insercao DESC";
+    $result_movimentacao_datatime = "SELECT * FROM vac_lotes ORDER BY data_criacao DESC";
     $data_time = mysqli_query($mysqli_connection, $result_movimentacao_datatime);
 
     $field_movimentacao = mysqli_fetch_assoc($data_time);
 
-    $soma = "SELECT SUM(mov_quantidade) AS total FROM movimentacao";
+    $soma = "SELECT SUM(quantidade) AS total FROM vac_lotes";
     $result_soma = mysqli_query($mysqli_connection, $soma);
     $recebidas_total = mysqli_fetch_assoc($result_soma);
     $aplicadas_total = $doses_total;
@@ -172,8 +172,8 @@
                                 <div class="card-body">
                                     <h4 class="card-title">BEM VINDO AO VACINÔMETRO DA PREFEITURA DE CRUZ</h4>
 
-                                    <p class="card-description"> <code> Última Atualização: <strong> <?= date('d/m/Y', strtotime($field_movimentacao['mov_data_insercao'])); ?></strong> às
-                            <strong> <?= date('H:i:s', strtotime($field_movimentacao['mov_data_insercao'])); ?></strong>
+                                    <p class="card-description"> <code> Última Atualização: <strong> <?= date('d/m/Y', strtotime($field_movimentacao['data_criacao'])); ?></strong> às
+                            <strong> <?= date('H:i:s', strtotime($field_movimentacao['data_criacao'])); ?></strong>
         - Dados da Secretaria Municipal de Saúde (SESA).</code></p>
                                     <div class="row">
                                         <div class="col-lg-4 col-md-6">
@@ -394,25 +394,25 @@
                                                         <thead>
                                                             <tr>
                                                                 <th>Categoria</th>
-                                                                <th>DOSE 01 - Recebidas/Aplicadas</th>
-                                                                <th>DOSE 02 - Recebidas/Aplicadas</th>
+                                                                <th>DOSE 01 - Aplicadas</th>
+                                                                <th>DOSE 02 - Aplicadas</th>
                                                             </tr>
                                                         </thead>
                                                         <tbody>
                                                             <tr>
                                                                 <td>Profissionais de Saúde</td>
-                                                                <td>274/ <strong> <?php echo $doses_01_profissionais; ?>
-                                                                    </strong> - </td>
-                                                                <td>182/ <strong> <?php echo $doses_02_profissionais; ?>
-                                                                    </strong> - </td>
+                                                                <td><strong><?php echo $doses_01_profissionais; ?>
+                                                                    </strong></td>
+                                                                <td><strong> <?php echo $doses_02_profissionais; ?>
+                                                                    </strong></td>
 
                                                             </tr>
                                                             <tr>
                                                                 <td>Faixa Etária</td>
-                                                                <td>160/ <strong>
+                                                                <td><strong>
                                                                         <?php echo $dose_01_idosos_faixa_etaria; ?>
                                                                     </strong> </td>
-                                                                <td>Aguardando / <strong>
+                                                                <td><strong>
                                                                         <?php echo $dose_02_idosos_faixa_etaria; ?>
                                                                     </strong> </td>
 
@@ -425,7 +425,7 @@
 
                                                         <p>
                                                             <?php  
-                                                                echo "Temos os total de $doses_total  aplicadas. <br>";
+                                                                echo "Temos o total de $doses_total  aplicadas. <br>";
                                                                 echo "$doses_01_total pessoas receberam a 1ª dose!!! <br> ";
                                                                 echo "$doses_02_total pessoas receberam a 2ª dose!!! <br> ";
                                                                 ?>
@@ -461,25 +461,25 @@
 
                                                                 <td>
 
-                                                                    <?= date('d/m/Y', strtotime($row_movimentacao['data_entrada'])); ?>
+                                                                    <?= date('d/m/Y', strtotime($row_movimentacao['data_recebimento'])); ?>
                                                                 </td>
 
                                                                 <td>
 
-                                                                    <?= $row_movimentacao['mov_descricao']; ?>
+                                                                    <?= $row_movimentacao['descricao']; ?>
                                                                 </td>
                                                                 <td>
 
-                                                                    <?= $row_movimentacao['mov_nome_vacina']; ?>
+                                                                    <?= $row_movimentacao['fabricante']; ?>
                                                                 </td>
                                                                 <td>
 
-                                                                    <?= $row_movimentacao['mov_lote_vacina']; ?>
+                                                                    <?= $row_movimentacao['lote']; ?>
                                                                 </td>
 
                                                                 <td>
 
-                                                                    <?= $row_movimentacao['mov_quantidade']; ?>
+                                                                    <?= $row_movimentacao['quantidade']; ?>
                                                                 </td>
 
 

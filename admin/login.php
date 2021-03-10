@@ -33,7 +33,7 @@ session_start();
 			<nav class="navbar default-layout col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
 				<div class="text-center navbar-brand-wrapper d-flex align-items-top justify-content-center">
 					<a class="navbar-brand brand-logo" href="#">
-					<img style="width: 140px" src="https://www.cruz.ce.gov.br/portal/wp-content/uploads/2018/03/logo-pmc.png" alt="Prefeitura de Cruz/CE" /> </a>
+					<img style="width: 140px" src="https://www.cruz.ce.gov.br/wp-content/uploads/2018/03/logo-pmc.png" alt="Prefeitura de Cruz/CE" /> </a>
 					<a class="navbar-brand brand-logo-mini" href="#">
 					<img src="../assets/images/pmc-logo-mobile.png" alt="Prefeitura de Cruz/CE" /> </a>
 				</div>
