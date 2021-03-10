@@ -69,35 +69,70 @@
                                     <h4 class="card-title">INSIRA OS DADOS DA MOVIMENTAÇÃO</h4>
                                     <p class="card-description"> <code>Insira os dados nos campos abaixo...</code></p>
                                     <form class="forms-sample" method="POST" action="verifica_movimentacao_vacinas.php">
+
                                         <div class="form-group">
                                             <label for="InputDatadeEntrada">Data de entrada</label>
-                                            <input type="date" class="form-control" name="data_de_entrada"
+                                            <input type="date" class="form-control" name="mov_data_de_entrada"
                                                 id="InputDatadeEntrada">
                                         </div>
+
                                         <div class="form-group">
                                             <label for="InputDescricao">Descrição</label>
-                                            <input type="text" class="form-control" name="descricao"
+                                            <input type="text" class="form-control" name="mov_descricao"
                                                 id="InputDescricao">
                                         </div>
-                                        <div class="form-group">
-                                            <label for="InputVacina">Vacina</label>
-                                            <select class="form-control" name="vacina" id="InputVacina">
-                                                <option>Fundação Butantan</option>
-                                                <option>Fundação Oswaldo Cruz</option>
-                                            </select>
 
+                                        <div class="form-group">
+                                            <label for="InputNFM">Nº NFM</label>
+                                            <input type="text" class="form-control" name="mov_nfm" id="InputNFM">
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="InputVacina">Fabricante</label>
+                                            <input type="text" class="form-control" name="mov_nome_vacina">
                                         </div>
 
                                         <div class="form-group">
                                             <label for="InputLote">Lote</label>
-                                            <input type="text" class="form-control" name="mov_lote_vacina" id="InputLote">
+                                            <input type="text" class="form-control" name="mov_lote_vacina"
+                                                id="InputLote">
                                         </div>
+
+                                        <div class="form-group">
+                                            <label for="InputDatadeValidade">Validade</label>
+                                            <input type="date" class="form-control" name="mov_data_de_validade"
+                                                id="InputDatadeValidade">
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="InputD1PS">Dose 01 PS</label>
+                                            <input type="number" class="form-control" id="InputD1PS" name="mov_d1ps"
+                                                placeholder="Insira a parcial">
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="InputD1IDOSOS">Dose 01 Idosos</label>
+                                            <input type="number" class="form-control" id="InputD1IDOSOS"
+                                                name="mov_d1idosos" placeholder="Insira a parcial">
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="InputD2PS">Dose 02 PS</label>
+                                            <input type="number" class="form-control" id="InputD2PS" name="mov_d2ps"
+                                                placeholder="Insira a parcial">
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="InputD2IDOSOS">Dose 02 Idosos</label>
+                                            <input type="number" class="form-control" id="InputD2IDOSOS"
+                                                name="mov_d2idosos" placeholder="Insira a parcial">
+                                        </div>
+
                                         <div class="form-group">
                                             <label for="InputQuantidade">Quantidade</label>
                                             <input type="number" class="form-control" id="InputQuantidade"
-                                                name="quantidade" placeholder="Insira a quantidade">
+                                                name="mov_quantidade" placeholder="Insira a quantidade total">
                                         </div>
-
 
                                         <button type="submit" class="btn btn-success mr-2" name="enviar">Salvar</button>
                                         <button type="reset" class="btn btn-danger mr-2" name="limpar">Limpar</button>

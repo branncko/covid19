@@ -114,7 +114,7 @@
                                                     </td>
                                                     <td style="font-size:12px;" class="caracteres h8">
                                                         <strong><?php echo $row_vacinas['vac_categoria']; ?></strong>
-                                                    
+
                                                     </td>
                                                     <td style="font-size:12px;" class="caracteres h8">
                                                         <strong> <?php echo $row_vacinas['vac_vacina']; ?> -
@@ -122,11 +122,23 @@
 
 
                                                     </td>
-                                                    <td class="h8"> <button> <?php echo "<a href='../admin/editar-vacinacao_02.php?id=" . $row_vacinas['id'] . "'>Editar</a>";?>
-                                                    </button>
-                                                    <button type="button" class="btn btn-primary"
+                                                    <td class="h8">
+                                                        <button type="button" class="btn btn-primary"
                                                             data-toggle="modal"
-                                                            data-target="#detalhes-<?php echo $row_vacinas['id']; ?>"><i class="fa fa-info-circle"></i></button>
+                                                            data-target="#detalhes-<?php echo $row_vacinas['id']; ?>"><i
+                                                                class="fa fa-info-circle"></i>
+                                                        </button>
+
+                                                        <button type="button" class="btn btn-warning">
+                                                            <a href="../admin/editar-vacinacao_02.php?id=<?php echo $row_vacinas['id'];?>"
+                                                                class="text-light">E</a>
+                                                        </button>
+                                                        <button type="button" class="btn btn-danger" data-toggle="modal"
+                                                            data-target="#excluir-<?php echo $row_vacinas['id']; ?>"><i
+                                                                class="fa fa-info-circle"></i>
+                                                        </button>
+
+
                                                     </td>
                                                 </tr>
                                                 <!-- Modal detalhes -->
@@ -136,7 +148,8 @@
                                                     <div class="modal-dialog modal-dialog-centered" role="document">
                                                         <div class="modal-content">
                                                             <div class="modal-header">
-                                                                <h4 class="h6">Informações Principais | <?php echo $row_vacinas['id']; ?>
+                                                                <h4 class="h6">Informações Principais |
+                                                                    <?php echo $row_vacinas['id']; ?>
                                                                 </h4>
 
                                                                 <button type="button" class="close" data-dismiss="modal"
@@ -197,6 +210,84 @@
                                                     </div>
                                                 </div>
                                                 <!-- Modal detalhes -->
+
+                                                <!-- Modal excluir -->
+                                                <div class="modal fade" id="excluir-<?php echo $row_vacinas['id']; ?>"
+                                                    tabindex="-1" role="dialog"
+                                                    aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                                    <div class="modal-dialog modal-dialog-centered" role="document">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header bg-danger">
+                                                                <h4 class="h6 text-light">CONFIRMAR A EXCLUSÃO DO REGISTRO |
+                                                                    <?php echo $row_vacinas['id']; ?>
+                                                                </h4>
+
+                                                                <button type="button" class="close" data-dismiss="modal"
+                                                                    aria-label="Close">
+                                                                    <span aria-hidden="true">&times;</span>
+                                                                </button>
+                                                            </div>
+                                                            <div class="modal-body">
+                                                                <p class="card-description margin-bottom-zero">
+
+                                                                <ul>
+                                                                    <li><strong>Data aplicação:</strong>
+                                                                        <?php echo  date('d/m/Y', strtotime($row_vacinas['vac_data_vacinacao'])); ?>
+                                                                    </li>
+                                                                    <li>
+                                                                    <li><strong>Vacinado:</strong>
+
+                                                                        <?php echo $row_vacinas['vac_vacinado']; ?>
+                                                                    </li>
+
+                                                                    <li><strong>Unidade:</strong>
+                                                                        <?php echo $row_vacinas['vac_estabelecimento']; ?>
+                                                                    </li>
+                                                                    <li><strong>Dose:</strong>
+                                                                        <?php echo $row_vacinas['vac_dose']; ?>
+                                                                    </li>
+                                                                    <li><strong>Fase:</strong>
+                                                                        <?php echo $row_vacinas['vac_fase']; ?>
+                                                                    </li>
+                                                                    <li><strong>Categoria:</strong>
+                                                                        <?php echo $row_vacinas['vac_categoria']; ?>
+                                                                    </li>
+                                                                    <li> <strong>Sub Categoria:</strong>
+                                                                        <?php echo $row_vacinas['vac_grupo_atendimento']; ?>
+                                                                    </li>
+
+                                                                    <li><strong>Vacina:</strong>
+                                                                        <?php echo $row_vacinas['vac_vacina']; ?></li>
+                                                                    <li><strong>Lote:</strong>
+                                                                        <?php echo $row_vacinas['vac_lote']; ?></li>
+                                                                    <li><strong>Vacinador:</strong>
+                                                                        <?php echo $row_vacinas['vac_vacinador']; ?>
+                                                                    </li>
+
+
+
+                                                                </ul>
+
+                                                                </p>
+
+
+                                                            </div>
+                                                            <div class="modal-footer">
+                                                                <button type="button" class="btn btn-danger">
+                                                                <a href="../admin/excluir-vacinacao_02.php?id=<?php echo $row_vacinas['id'];?>"
+                                                                class="text-light">APAGAR</a></button>
+                                                                   
+                                                                <button type="button" class="btn btn-success"
+                                                                    data-dismiss="modal"> Cancelar</button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!-- Modal excluir -->
+
+
+
+
                                                 <?php } ?>
                                             </tbody>
                                         </table>

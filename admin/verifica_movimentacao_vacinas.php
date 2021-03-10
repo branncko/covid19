@@ -45,34 +45,40 @@
 										<p class="card-description">
 										<code>
 										<?php 
-										$data_de_entrada = $_POST['data_de_entrada'];
-										$descricao = $_POST['descricao'];
-										$vacina = $_POST['vacina'];
+										$mov_data_de_entrada = $_POST['mov_data_de_entrada'];
+										$mov_data_de_validade = $_POST['mov_data_de_validade'];
+										$mov_d1ps = $_POST['mov_d1ps'];
+										$mov_d1idosos = $_POST['mov_d1idosos'];
+										$mov_d2ps = $_POST['mov_d2ps'];
+										$mov_d2idosos = $_POST['mov_d2idosos'];
+										$mov_nfm = $_POST['mov_nfm'];
+										$mov_descricao = $_POST['mov_descricao'];
+										$mov_nome_vacina = $_POST['mov_nome_vacina'];
 										$mov_lote_vacina = $_POST['mov_lote_vacina'];
-										$quantidade = $_POST['quantidade'];
-										$detalhes = $_POST['detalhes'];
+										$mov_quantidade = $_POST['mov_quantidade'];
+										$mov_detalhes = $_POST['mov_detalhes'];
 										$erro = 0;
 
 										//Verifica a data
-										if (empty($data_de_entrada)) {
+										if (empty($mov_data_de_entrada)) {
 											echo "Favor digitar a data.<br>";
 											$erro = 1;
 										}
 
 										//Verifica o lote
-										if (empty($descricao)) {
+										if (empty($mov_descricao)) {
 											echo "Favor digitar a descrição do lote.<br>";
 											$erro = 1;
 										}
 										
 										//Verifica o nome da vacina
-										if (empty($vacina)) {
+										if (empty($mov_nome_vacina)) {
 											echo "Favor descrever a vacina.<br>";
 											$erro = 1;
 										}
 
 										//Verifica a quantidade
-										if (empty($quantidade)) {
+										if (empty($mov_quantidade)) {
 											echo "Favor digitar a quantidade. [ CAMPO NÚMERICO ]<br> ";
 											$erro = 1;
 										}
