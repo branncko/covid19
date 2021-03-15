@@ -68,7 +68,7 @@
 
         <div class="row m-3">
             <div class="col-md-9 col-sm-12 offset-lg">
-                <h2 class="p-3 h5 amarelo" style="text-align: center;"><small>Boletim Epidemiológico </small> <br>Doença
+                <h2 class="p-3 h5 amarelo" style="text-align: center;"><small>Boletim Epidemiológico </small> <br>Doença causada
                     pelo novo coronavírus (COVID-19)</h2>
             </div>
 

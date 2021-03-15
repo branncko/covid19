@@ -77,8 +77,7 @@
                 </div>
                 <div class="col-md-6 col-sm-12 offset-lg">
                     <h2 class="h5 amarelo" style="text-align: center;"><small>Boletim Epidemiológico </small>
-                        <br>Doença
-                        pelo novo coronavírus (COVID-19)
+                        <br>Doença causada pelo novo coronavírus (COVID-19)
                     </h2>
                 </div>
 
